@@ -1,0 +1,96 @@
+@import url('https://fonts.googleapis.com/css2?family=Frijole&family=Lato&display=swap');
+
+:root {
+    --title-font-family: 'Frijole';
+    --content-font-family: 'Lato';
+
+    --main-background-color-dark: #2a2726;
+    --main-title-color-dark: #a80038;
+    --main-sidebar-color-pink: #fd0054;
+    --main-sidebar-color-pis:#4ae3b5;
+    --main-sidebar-color-blue:#00fff0;
+    --main-sidebar-icon-white:#fbf9fa;
+    --main-title-font-size: 4rem;
+    --main-content-color-dark: #f8f5e0;
+    --small-title-font-size: 1.5rem;
+}
+
+.main {
+    background-color: var(--main-background-color-dark);
+}
+
+.main_content {
+    padding-left: 20rem;
+    padding-right: 20rem;
+    font-family: var(--content-font-family), sans-serif;
+    color: var(--main-content-color-dark);
+}
+
+.main_title {
+    font-family: var(--title-font-family), cursive;
+    text-align: center;
+    font-size: var(--main-title-font-size);
+    color: var(--main-title-color-dark);
+}
+
+.navigation-bar {
+    font-family: var(--title-font-family), cursive;
+    color: var(--main-title-color-dark);
+    font-size: var(--small-title-font-size);
+    text-align: center;
+    position: sticky;
+    background-color: var(--main-background-color-dark);
+    padding: 1rem 0rem 1rem 0rem;
+    bottom: 0;
+}
+
+.navigation-bar > span {
+    padding: 0rem 4rem 0rem 4rem;
+    cursor: pointer;
+}
+
+.sidebar-home {
+    width: 5rem;
+    height: 100vh;
+    position: relative;
+    background-color: var(--main-sidebar-color-pink);
+}
+
+.sidebar-notice {
+    width: 5rem;
+    height: 100vh;
+    position: relative;
+    background-color: var(--main-sidebar-color-pis);
+}
+
+.sidebar-proyects{
+    width: 5rem;
+    height: 100vh;
+    position: relative;
+    background-color: var(--main-sidebar-color-blue);
+}
+
+sidebar-nav-list{
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.sidebar-nav-list:last-child{
+    margin-top: auto;
+}
+
+.sidebar-link{
+    display: flex;
+    align-items: center;
+    height: 5rem;
+    color: var(--main-sidebar-icon-white);
+    text-decoration: none;   
+}
+
+
+
+

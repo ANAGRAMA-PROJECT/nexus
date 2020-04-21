@@ -1,0 +1,27 @@
+{
+  "name": "main-site",
+  "version": "0.0.1",
+  "description": "Sitio publicitario del colectivo Anagrama.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/AlbertoMata/main-site.git"
+  },
+  "keywords": [
+    "operations",
+    "research",
+    "marketing"
+  ],
+  "author": "AlbertoMata",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/AlbertoMata/main-site/issues"
+  },
+  "homepage": "https://github.com/AlbertoMata/main-site#readme",
+  "devDependencies": {
+    "prettier": "2.0.4"
+  }
+}

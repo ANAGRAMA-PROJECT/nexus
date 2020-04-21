@@ -13,6 +13,10 @@
     --main-title-font-size: 4rem;
     --main-content-color-dark: #f8f5e0;
     --small-title-font-size: 1.5rem;
+
+    --navigation-bar-padding: 1rem 0rem 1rem 0rem;
+    --navigation-bar-elements-padding: 0rem 4rem 0rem 4rem;
+
 }
 
 .main {
@@ -40,12 +44,12 @@
     text-align: center;
     position: sticky;
     background-color: var(--main-background-color-dark);
-    padding: 1rem 0rem 1rem 0rem;
+    padding: var(--navigation-bar-padding);
     bottom: 0;
 }
 
 .navigation-bar > span {
-    padding: 0rem 4rem 0rem 4rem;
+    padding: var(--navigation-bar-elements-padding);
     cursor: pointer;
 }
 

@@ -1,35 +1,27 @@
+console.debug("Loading page... ");
 
 let pageState = {
-    sectionList : ['Inicio', 'Noticias', 'Proyectos', 'Contacto', 'Hackers'],
-    mainTitle: 'Colectivo Anagrama',
-    defaultSection:  'Inicio'
+  sectionList: ["Inicio", "Noticias", "Proyectos", "Contacto", "Hackers"],
+  mainTitle: "Colectivo Anagrama",
+  defaultSection: "Inicio",
 };
 
-async function getHomeContent () {
-    let response = await fetch ('./scripts/main-content.html');
-    let txt =  response.text();
+getHomeContent = async () => {
+  let response = await fetch("templates/home-content.html");
+  let txt = await response.text();
 
-    console.log(txt);
-    
+  let html = new DOMParser().parseFromString(txt, "text/html");
 
-    let html =  new DOMParser().parseFromString(txt, 'text/html');
-
-    console.log(html);
-    console.log(html.querySelector('#main_content__home'));
-
-    return html.querySelector('template');
+  return html.querySelector("#main_content__home");
 }
 
-let domContentLoadedHandler = (event) => {
-    let mainTitleElement = document.getElementsByClassName ('main_title')[0];
-    let mainContentElement = document.getElementsByClassName ('main_content')[0];
+domContentLoadedHandler = async  (event) => {
+  let mainTitleElement = document.getElementsByClassName("main_title")[0];
+  let mainContentElement = document.getElementsByClassName("main_content")[0];
 
-    mainTitleElement.textContent = pageState.mainTitle;
+  mainTitleElement.textContent = pageState.mainTitle;
 
-    getHomeContent();
+  mainContentElement.appendChild (await getHomeContent());
+};
 
-    // mainContentElement.appendChild (getHomeContent());
-}
-
-
-document.addEventListener ('DOMContentLoaded', domContentLoadedHandler); 
+document.addEventListener("DOMContentLoaded", domContentLoadedHandler);

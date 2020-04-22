@@ -2,7 +2,7 @@
   "name": "main-site",
   "version": "0.0.1",
   "description": "Sitio publicitario del colectivo Anagrama.",
-  "main": "index.js",
+  "main": "server/index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -23,5 +23,8 @@
   "homepage": "https://github.com/AlbertoMata/main-site#readme",
   "devDependencies": {
     "prettier": "2.0.4"
+  },
+  "dependencies": {
+    "express": "^4.17.1"
   }
 }

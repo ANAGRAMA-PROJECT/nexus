@@ -2,7 +2,7 @@ let express = require('express');
 let path = require('path');
 
 let app = express();
-let options = { index: 'home.html' };
+let options = { index: 'main.html' };
 
 app.set('port', process.env.PORT || 5000);
 

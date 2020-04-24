@@ -18,18 +18,18 @@
 	--navigation-bar-elements-padding: 0rem 4rem 0rem 4rem;
 }
 
-.main {
+#main {
 	background-color: var(--main-background-color-dark);
 }
 
-.main_content {
+#main_content {
 	padding-left: 20rem;
 	padding-right: 20rem;
 	font-family: var(--content-font-family), sans-serif;
 	color: var(--main-content-color-dark);
 }
 
-.main_title {
+#main_title {
 	font-family: var(--title-font-family), cursive;
 	text-align: center;
 	font-size: var(--main-title-font-size);

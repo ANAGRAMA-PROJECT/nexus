@@ -11,9 +11,21 @@ let loadNews = async (parentNode) => {
     newsContent.hidden = true;
 };
 
+let loadProjects = async (parentNode) => {
+	let projectsContent = await templateManager.fetchHtmlTemplate(
+        'templates/projectsContent.html',
+        '#main_content__projects'
+    );
+
+    parentNode.appendChild(projectsContent);
+
+    projectsContent.hidden = true;
+};
+
 let loadMainContent = () => {
     let mainContent = document.querySelector ('#main_content');
 	loadNews(mainContent);
+	loadProjects(mainContent);
 }
 
 let loadSite = () => {

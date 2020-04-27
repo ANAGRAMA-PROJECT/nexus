@@ -11,92 +11,32 @@
 			rel="stylesheet"
 			href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
 		/>
-		<title>Colectivo Angrama</title>
+		<title>Colectivo Anagrama</title>
+		<script type="module" src="./modules/main.js"></script>
 		<style>
 			@import './styles/main.css';
 		</style>
-		<script type="module" src="./modules/main.js"></script>
 	</head>
 
-	<body id="main">
-		<div>
+	<body>
+		<div id="main">
 			<div id="main_title"></div>
 
 			<!-- BODY -->
-			<div>
-				<div id="main_content"> 
-				</div>
+			<div id="main_content__container">
+				<div id="content_container__sidebar">sidebar</div>
+				<div id="main_content"></div>
+				<div id="content_container__leftover">aside</div>
 			</div>
 			<!-- END BODY -->
 
 			<!-- Navigation Menu -->
-			<div class="navigation-bar">
+			<div id="navigation-bar">
 				<span> Inicio </span>
 				<span id="navigation-bar_news"> Noticias </span>
 				<span> Proyectos </span>
 				<span> Contacto </span>
 				<span> Hackers </span>
-			</div>
-
-			<div style="display: none;"> 
-				<!-- Sidebar -->
-				<div class="sidebar-home">
-					<ul class="sidebar-nav-list">
-						<li class="sidebar-item">
-							<a href="#" class="sidebar-link"
-								>A1 <i class="fa fa-free-code-camp"></i
-							></a>
-						</li>
-						<li class="sidebar-item">
-							<a href="#" class="sidebar-link"
-								>A2 <i class="fa fa-beer"></i
-							></a>
-						</li>
-						<li class="sidebar-item">
-							<a href="#" class="sidebar-link"
-								>A3 <i class="fa fa-bug"></i
-							></a>
-						</li>
-					</ul>
-				</div>
-				<div class="sidebar-notice">
-					<ul class="sidebar-nav-list">
-						<li class="sidebar-item">
-							<a href="#" class="sidebar-link"
-								>B1 <i class="fa fa fa-newspaper-o"></i
-							></a>
-						</li>
-						<li class="sidebar-item">
-							<a href="#" class="sidebar-link"
-								>B2 <i class="fa fa-file-text"></i
-							></a>
-						</li>
-						<li class="sidebar-item">
-							<a href="#" class="sidebar-link"
-								>B3 <i class="fa fa-external-link"></i
-							></a>
-						</li>
-					</ul>
-				</div>
-				<div class="sidebar-proyects">
-					<ul class="sidebar-nav-list">
-						<li class="sidebar-item">
-							<a href="#" class="sidebar-link"
-								>C1 <i class="fa fa-book"></i
-							></a>
-						</li>
-						<li class="sidebar-item">
-							<a href="#" class="sidebar-link"
-								>C2 <i class="fa fa-file-text"></i
-							></a>
-						</li>
-						<li class="sidebar-item">
-							<a href="#" class="sidebar-link"
-								>C3 <i class="fa fa-file-o"></i
-							></a>
-						</li>
-					</ul>
-				</div>
 			</div>
 
 			<!-- Contact Info -->

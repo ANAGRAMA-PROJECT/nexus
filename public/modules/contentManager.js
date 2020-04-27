@@ -22,14 +22,30 @@ let loadProjects = async (parentNode) => {
     projectsContent.hidden = true;
 };
 
+// cargar contenido sidebar
+let loadSidebarContent = async() =>{
+	let sidebarContent = document.querySelector('#content_container__sidebar');
+	let homeSidebar = null;
+	homeSidebar = await templateManager.fetchHtmlTemplate(
+		'templates/sidebarContents.html',
+		'.sidebar_home_content'
+	);
+    sidebarContent.appendChild(homeSidebar);
+}
+
+
 let loadMainContent = () => {
     let mainContent = document.querySelector ('#main_content');
 	loadNews(mainContent);
-	loadProjects(mainContent);
+    loadProjects(mainContent);
+    
 }
+
 
 let loadSite = () => {
     loadMainContent();
+   loadSidebarContent();
+
 };
 
 

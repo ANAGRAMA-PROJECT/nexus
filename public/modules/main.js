@@ -15,11 +15,12 @@ let setHomeContent = async () => {
 
 	homeContent = await templateManager.fetchHtmlTemplate(
 		'templates/homeContent.html',
-		'#main_content__home'
+		'#main_content__home',
 	);
 
 	mainContent.appendChild(homeContent);
 };
+
 
 let setTitle = () => {
 	let mainTitle = document.querySelector('#main_title');

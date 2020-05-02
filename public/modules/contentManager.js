@@ -28,9 +28,20 @@ let loadSidebarContent = async() =>{
 	let homeSidebar = null;
 	homeSidebar = await templateManager.fetchHtmlTemplate(
 		'templates/sidebarContents.html',
-		'.sidebar_home_content'
-	);
-    sidebarContent.appendChild(homeSidebar);
+		'#allbarside'
+    );
+
+    console.log(homeSidebar);
+    console.log(homeSidebar.children);
+
+    let array = homeSidebar.children;
+
+    for (let node of array) {
+        let clone = node.cloneNode(true);
+        clone.hidden = true;
+        sidebarContent.appendChild(clone);
+    } 
+
 }
 
 
@@ -38,7 +49,6 @@ let loadMainContent = () => {
     let mainContent = document.querySelector ('#main_content');
 	loadNews(mainContent);
     loadProjects(mainContent);
-    
 }
 
 

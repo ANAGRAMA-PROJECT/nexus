@@ -15,23 +15,84 @@ let setHomeContent = async () => {
 
 	homeContent = await templateManager.fetchHtmlTemplate(
 		'templates/homeContent.html',
-		'#main_content__home',
+		'#main_content__home'
 	);
 
 	mainContent.appendChild(homeContent);
 };
-
 
 let setTitle = () => {
 	let mainTitle = document.querySelector('#main_title');
 	mainTitle.textContent = pageState.mainTitle;
 };
 
-let newsClickHandler = (event) => {
-	let homeContent = document.querySelector('#main_content__home');
-	let newsContent = document.querySelector('#main_content__news');
+let hideChildren = (parentNodeSelector) => {
+	let parentNode = document.querySelector(parentNodeSelector);
 
-	homeContent.hidden = true;
+	for (let child of parentNode.children) {
+		child.hidden = true;
+	}
+};
+
+let hideCurrentContext = () => {
+	let homeContentSelector = '#main_content';
+	let sideBarSelector = '#content_container__sidebar';
+
+	hideChildren(homeContentSelector);
+	hideChildren(sideBarSelector);
+};
+
+let homeClickHandler = (event) => {
+	hideCurrentContext();
+	showHomeContext();
+};
+
+let showHomeContext = () => {
+	showHomeContent();
+	showHomeSidebar();
+};
+
+let showHomeContent = () => {
+	let homeContent = document.querySelector('#main_content__home');
+	homeContent.hidden = false;
+};
+
+let newsClickHandler = (event) => {
+	hideCurrentContext();
+	showNewsContext();
+};
+
+let showNewsContent = () => {
+	let newsContent = document.querySelector('#main_content__news');
+	newsContent.hidden = false;
+};
+
+let showNewsContext = () => {
+	showNewsContent();
+	showNewsBarside();
+};
+
+let showNewsBarside = () => {
+	let newsContent = document.querySelector('#sidebar_notice_content');
+	newsContent.hidden = false;
+};
+
+let proyectClickHandler = (event) => {
+	hideCurrentContext();
+	showProjectContext();
+};
+
+let showProjectContent = () => {
+	let proyectContent = document.querySelector('#main_content__projects');
+	proyectContent.hidden = false;
+};
+
+let showProjectContext = () => {
+	showProjectContent();
+	showProjectBarside();
+};
+let showProjectBarside = () => {
+	let newsContent = document.querySelector('#sidebar_proyects_content');
 	newsContent.hidden = false;
 };
 
@@ -39,6 +100,10 @@ let domContentLoadedHandler = async (event) => {
 	setTitle();
 	await setHomeContent();
 	contentManager.loadSite();
+
+	document
+		.querySelector('#navigation-bar_home')
+		.addEventListener('click', homeClickHandler);
 
 	document
 		.querySelector('#navigation-bar_news')

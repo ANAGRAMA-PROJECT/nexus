@@ -25,6 +25,8 @@
     "prettier": "2.0.4"
   },
   "dependencies": {
-    "express": "^4.17.1"
+    "axios": "^0.19.2",
+    "express": "^4.17.1",
+    "xml2js": "^0.4.23"
   }
 }

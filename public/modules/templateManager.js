@@ -1,6 +1,28 @@
-let htmlNodes = new Map();
+const htmlNodes = new Map();
 
-let fetchHtmlTemplate = (path, querySelector) => {
+const fetchTemplate = (path) => {
+    const promise = new Promise (async (resolve, reject) =>  {
+        try {
+            const mimeType = 'text/html';
+
+            const response = await fetch(path);
+            const txt = await response.text();
+
+            const html = new DOMParser().parseFromString (txt, mimeType);
+            const template = html.querySelector ('template');
+            const node = html.importNode (template.content, true);
+
+            resolve (node);
+
+        } catch (e) {
+            reject (e);
+        }
+    });
+
+    return promise;
+}
+
+const fetchHtmlTemplate = (path, querySelector) => {
     let promise = new Promise (async (resolve, reject) =>  {
         try {
             let mimeType = 'text/html';
@@ -9,7 +31,7 @@ let fetchHtmlTemplate = (path, querySelector) => {
             let txt = await response.text();
 
             let html = new DOMParser().parseFromString(txt, mimeType);
-            let htmlNode = html.querySelector(querySelector)
+            let htmlNode = html.querySelector(querySelector);
 
             resolve (htmlNode);
 
@@ -21,12 +43,12 @@ let fetchHtmlTemplate = (path, querySelector) => {
     return promise;
 };
 
-let getHtmlNode = (nodeName) => {
+const getHtmlNode = (nodeName) => {
     return htmlNodes.set (nodeName);
 };
 
-let setHtmlNode = (nodeName, domNode) => {
+const setHtmlNode = (nodeName, domNode) => {
     htmlNodes.set (nodeName, domNode);
 };
 
-export {fetchHtmlTemplate, getHtmlNode, setHtmlNode};
+export {fetchHtmlTemplate, getHtmlNode, setHtmlNode, fetchTemplate };

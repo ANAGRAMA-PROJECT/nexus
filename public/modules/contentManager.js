@@ -1,62 +1,56 @@
 import * as templateManager from './templateManager.js';
 
-let loadNews = async (parentNode) => {
-	let newsContent = await templateManager.fetchHtmlTemplate(
-        'templates/newsContent.html',
-        '#main_content__news'
-    );
+const loadNews = async (parentNode) => {
+	const newsContent = await templateManager.fetchHtmlTemplate(
+		'templates/newsContent.html',
+		'#main_content__news'
+	);
 
-    parentNode.appendChild(newsContent);
+	parentNode.appendChild(newsContent);
 
-    newsContent.hidden = true;
+	newsContent.hidden = true;
 };
 
-let loadProjects = async (parentNode) => {
-	let projectsContent = await templateManager.fetchHtmlTemplate(
-        'templates/projectsContent.html',
-        '#main_content__projects'
-    );
+const loadProjects = async (parentNode) => {
+	const projectsContent = await templateManager.fetchHtmlTemplate(
+		'templates/projectsContent.html',
+		'#main_content__projects'
+	);
 
-    parentNode.appendChild(projectsContent);
+	parentNode.appendChild(projectsContent);
 
-    projectsContent.hidden = true;
+	projectsContent.hidden = true;
 };
 
 // cargar contenido sidebar
-let loadSidebarContent = async() =>{
-	let sidebarContent = document.querySelector('#content_container__sidebar');
-	let homeSidebar = null;
-	homeSidebar = await templateManager.fetchHtmlTemplate(
+const loadSidebarContent = async () => {
+	const sidebarContent = document.querySelector('#content_container__sidebar');
+	const homeSidebar = await templateManager.fetchHtmlTemplate(
 		'templates/sidebarContents.html',
 		'#allbarside'
-    );
+	);
 
-    console.log(homeSidebar);
-    console.log(homeSidebar.children);
+	console.log(homeSidebar);
+	console.log(homeSidebar.children);
 
-    let array = homeSidebar.children;
+	const array = homeSidebar.children;
 
-    for (let node of array) {
-        let clone = node.cloneNode(true);
-        clone.hidden = true;
-        sidebarContent.appendChild(clone);
-    } 
-
-}
-
-
-let loadMainContent = () => {
-    let mainContent = document.querySelector ('#main_content');
-	loadNews(mainContent);
-    loadProjects(mainContent);
-}
-
-
-let loadSite = () => {
-    loadMainContent();
-   loadSidebarContent();
-
+	for (const node of array) {
+		const clone = node.cloneNode(true);
+		clone.hidden = true;
+		sidebarContent.appendChild(clone);
+	}
 };
 
+const loadMainContent = () => {
+	const mainContent = document.querySelector('#main_content');
+	loadNews(mainContent);
+	loadProjects(mainContent);
+};
 
-export {loadSite}; 
+const loadSite = () => {
+	loadMainContent();
+	loadSidebarContent();
+};
+
+export { loadSite };

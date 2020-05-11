@@ -22,13 +22,11 @@ const loadProjects = async (parentNode) => {
 	projectsContent.hidden = true;
 };
 
+
 // cargar contenido sidebar
 const loadSidebarContent = async () => {
 	const sidebarContent = document.querySelector('#content_container__sidebar');
-	const homeSidebar = await templateManager.fetchHtmlTemplate(
-		'templates/sidebarContents.html',
-		'#allbarside'
-	);
+	const homeSidebar = await templateManager.fetchTemplate('templates/sidebarContents.html');
 
 	console.log(homeSidebar);
 	console.log(homeSidebar.children);

@@ -47,6 +47,11 @@ const showHomeContext = () => {
 	showHomeSidebar();
 };
 
+const showHomeSidebar = () => {
+	let sidebarHomeContent = document.querySelector('#sidebar_home__content');
+	sidebarHomeContent.hidden = false;
+};
+
 const showHomeContent = () => {
 	let homeContent = document.querySelector('#main_content__home');
 	homeContent.hidden = false;
@@ -71,24 +76,44 @@ const showNewsBarside = () => {
 	const newsContent = document.querySelector('#sidebar_notice_content');
 	newsContent.hidden = false;
 };
-
-const proyectClickHandler = (event) => {
+////
+const projectClickHandler = (event) => {
 	hideCurrentContext();
-	showProjectContext();
+	showprojectContext();
 };
 
-const showProjectContent = () => {
-	const proyectContent = document.querySelector('#main_content__projects');
-	proyectContent.hidden = false;
+const showprojectContent = () => {
+	const newsContent = document.querySelector('#main_content__projects');
+	newsContent.hidden = false;
 };
 
-const showProjectContext = () => {
-	showProjectContent();
-	showProjectBarside();
+const showprojectContext = () => {
+	showprojectContent();
+	showprojectBarside();
 };
 
-const showProjectBarside = () => {
-	const newsContent = document.querySelector('#sidebar_proyects_content');
+const showprojectBarside = () => {
+	const newsContent = document.querySelector('#sidebar_projects_content');
+	newsContent.hidden = false;
+};
+////
+const hackerClickHandler = (event) => {
+	hideCurrentContext();
+	showHackerContext();
+};
+
+const showHackerContent = () => {
+	const newsContent = document.querySelector('#main_content_hackers');
+	newsContent.hidden = false;
+};
+
+const showHackerContext = () => {
+	showHackerContent();
+	showHackerBarside();
+};
+
+const showHackerBarside = () => {
+	const newsContent = document.querySelector('#sidebar_hacker_content');
 	newsContent.hidden = false;
 };
 
@@ -104,6 +129,15 @@ const domContentLoadedHandler = async (event) => {
 	document
 		.querySelector('#navigation-bar_news')
 		.addEventListener('click', newsClickHandler);
+	
+	document
+		.querySelector('#navigation-bar_projects')
+		.addEventListener('click', projectClickHandler);
+
+		document
+		.querySelector('#navigation-bar_hackers')
+		.addEventListener('click',hackerClickHandler );	
+
 };
 
 document.addEventListener('DOMContentLoaded', domContentLoadedHandler);

@@ -1,7 +1,10 @@
 import * as templateManager from './templateManager.js';
 import * as contentManager from './contentManager.js';
+import * as rssManager from './rssManager.js'
 
 console.debug('Loading page... ');
+
+rssManager.fetchStories();
 
 const pageState = {
 	sectionList: ['Inicio', 'Noticias', 'Proyectos', 'Contacto', 'Hackers'],
@@ -139,5 +142,6 @@ const domContentLoadedHandler = async (event) => {
 		.addEventListener('click',hackerClickHandler );	
 
 };
+
 
 document.addEventListener('DOMContentLoaded', domContentLoadedHandler);

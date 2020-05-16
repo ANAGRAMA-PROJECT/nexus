@@ -1,35 +1,21 @@
 import * as templateManager from './templateManager.js';
 
-const loadNews = async (parentNode) => {
-	const newsContent = await templateManager.fetchHtmlTemplate(
-		'templates/newsContent.html',
-		'#main_content__news'
-	);
-
-	parentNode.appendChild(newsContent);
-
-	newsContent.hidden = true;
+const loadSite = () => {
+	loadMainContent();
+	loadSidebarContent();
 };
 
-const loadProjects = async (parentNode) => {
-	const projectsContent = await templateManager.fetchHtmlTemplate(
-		'templates/projectsContent.html',
-		'#main_content__projects'
-	);
-
-	parentNode.appendChild(projectsContent);
-
-	projectsContent.hidden = true;
+const loadMainContent = () => {
+	const mainContent = document.querySelector('#main_content');
+	loadNews(mainContent);
+	loadProjects(mainContent);
+	loadContact(mainContent);
 };
 
-
-// cargar contenido sidebar
+// Cargar contenido de sidebar
 const loadSidebarContent = async () => {
 	const sidebarContent = document.querySelector('#content_container__sidebar');
 	const homeSidebar = await templateManager.fetchTemplate('templates/sidebarContents.html');
-
-	console.log(homeSidebar);
-	console.log(homeSidebar.children);
 
 	const array = homeSidebar.children;
 
@@ -38,17 +24,31 @@ const loadSidebarContent = async () => {
 		clone.hidden = true;
 		sidebarContent.appendChild(clone);
 	}
+
 };
 
-const loadMainContent = () => {
-	const mainContent = document.querySelector('#main_content');
-	loadNews(mainContent);
-	loadProjects(mainContent);
+// Cargar contenido de main
+const loadNews = async (parentNode) => {
+	const newsContent = await templateManager.fetchTemplate('templates/newsContent.html');
+	hideFragmentContent (newsContent);
+	parentNode.appendChild(newsContent);
 };
 
-const loadSite = () => {
-	loadMainContent();
-	loadSidebarContent();
-};
+// Cargar contenido de projects
+const loadProjects = async (parentNode) => {
+	const projectsContent = await templateManager.fetchTemplate('templates/projectsContent.html');
+	hideFragmentContent (projectsContent);
+	parentNode.appendChild(projectsContent);
+}
+
+const loadContact = async (parentNode) => {
+	const contactContent = await templateManager.fetchTemplate('templates/contactContent.html');
+	hideFragmentContent (contactContent);
+	parentNode.appendChild(contactContent);
+}
+
+const hideFragmentContent = (domFragment) => {
+	domFragment.firstElementChild.hidden = true;
+}
 
 export { loadSite };

@@ -32,11 +32,16 @@
 	display: none;
 }
 
-
 body,
 html {
 	margin: 0;
 	padding: 0;
+}
+
+p {
+	text-align: justify;
+	text-justify: inter-word;
+	line-height: 1.8;
 }
 
 #main {
@@ -73,6 +78,10 @@ html {
 
 	overflow-y: scroll;
 	flex: 2;
+}
+
+#colective-mention {
+	color: var(--main-sidebar-color-pink);
 }
 
 #content_container__leftover {

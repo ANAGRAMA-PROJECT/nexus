@@ -13,7 +13,6 @@ const fetchTemplate = (path) => {
             const node = html.importNode (template.content, true);
 
             resolve (node);
-
         } catch (e) {
             reject (e);
         }
@@ -21,27 +20,6 @@ const fetchTemplate = (path) => {
 
     return promise;
 }
-
-const fetchHtmlTemplate = (path, querySelector) => {
-    let promise = new Promise (async (resolve, reject) =>  {
-        try {
-            let mimeType = 'text/html';
-
-            let response = await fetch(path);
-            let txt = await response.text();
-
-            let html = new DOMParser().parseFromString(txt, mimeType);
-            let htmlNode = html.querySelector(querySelector);
-
-            resolve (htmlNode);
-
-        } catch (e) {
-            reject (e);
-        }
-    });
-
-    return promise;
-};
 
 const getHtmlNode = (nodeName) => {
     return htmlNodes.set (nodeName);
@@ -51,4 +29,4 @@ const setHtmlNode = (nodeName, domNode) => {
     htmlNodes.set (nodeName, domNode);
 };
 
-export {fetchHtmlTemplate, getHtmlNode, setHtmlNode, fetchTemplate };
+export {getHtmlNode, setHtmlNode, fetchTemplate};

@@ -1,7 +1,7 @@
 import * as contentManager from './contentManager.js';
 import * as templateManager from './templateManager.js';
-import * as rssManager from './rssManager.js'
-import * as eventsHandler from './eventHandlers.js'
+import * as rssManager from './rssManager.js';
+import * as eventsHandler from './eventHandlers.js';
 
 console.debug('Loading page... ');
 
@@ -15,7 +15,9 @@ const pageState = {
 
 const setHomeContent = async () => {
 	const mainContent = document.querySelector('#main_content');
-	const homeContent = await templateManager.fetchTemplate('templates/homeContent.html');
+	const homeContent = await templateManager.fetchTemplate(
+		'templates/homeContent.html'
+	);
 
 	mainContent.appendChild(homeContent);
 };
@@ -26,7 +28,7 @@ const setTitle = () => {
 };
 
 const domContentLoadedHandler = async (event) => {
-	setTitle();
+	// setTitle();
 	await setHomeContent();
 	contentManager.loadSite();
 
@@ -36,16 +38,18 @@ const domContentLoadedHandler = async (event) => {
 
 	document
 		.querySelector('#navigation-bar_news')
-		.addEventListener('click',  eventsHandler.newsClickHandler);
-	
+		.addEventListener('click', eventsHandler.newsClickHandler);
+
 	document
 		.querySelector('#navigation-bar_projects')
 		.addEventListener('click', eventsHandler.projectClickHandler);
 
-		document
+	document
 		.querySelector('#navigation-bar_hackers')
-		.addEventListener('click', eventsHandler.hackerClickHandler );	
-
+		.addEventListener('click', eventsHandler.hackerClickHandler);
+	document
+		.querySelector('#navigation-bar_contact')
+		.addEventListener('click', eventsHandler.contactClickHandler);
 };
 
 document.addEventListener('DOMContentLoaded', domContentLoadedHandler);

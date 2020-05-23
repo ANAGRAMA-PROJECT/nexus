@@ -7,7 +7,7 @@ const loadSite = () => {
 
 const loadMainContent = () => {
 	const mainContent = document.querySelector('#main_content');
-	loadNews(mainContent);
+	loadFeeds(mainContent);
 	loadProjects(mainContent);
 	loadContact(mainContent);
 };
@@ -28,7 +28,7 @@ const loadSidebarContent = async () => {
 };
 
 // Cargar contenido de main
-const loadNews = async (parentNode) => {
+const loadFeeds = async (parentNode) => {
 	const newsContent = await templateManager.fetchTemplate('templates/newsContent.html');
 	hideFragmentContent (newsContent);
 	parentNode.appendChild(newsContent);

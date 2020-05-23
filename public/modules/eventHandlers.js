@@ -6,17 +6,22 @@ const homeClickHandler = (event) => {
 
 const newsClickHandler = (event) => {
 	hideCurrentContext();
-	showNewsContext();
+	showFeedsContext();
 };
 
 const projectClickHandler = (event) => {
 	hideCurrentContext();
-	showprojectContext();
+	showProjectsContext();
 };
 
 const hackerClickHandler = (event) => {
 	hideCurrentContext();
 	showHackerContext();
+};
+
+const contactClickHandler = (event) => {
+	hideCurrentContext();
+	showContactContext();
 };
 
 const hideCurrentContext = () => {
@@ -43,33 +48,33 @@ const showHomeContent = () => {
 };
 
 
-const showNewsContent = () => {
+const showFeedsContent = () => {
 	const newsContent = document.querySelector('#main_content__news');
 	newsContent.hidden = false;
 };
 
-const showNewsContext = () => {
-	showNewsContent();
-	showNewsBarside();
+const showFeedsContext = () => {
+	showFeedsContent();
+	showFeedsSidebar();
 };
 
-const showNewsBarside = () => {
+const showFeedsSidebar = () => {
 	const newsContent = document.querySelector('#sidebar_notice_content');
 	newsContent.hidden = false;
 };
 
 
-const showprojectContent = () => {
+const showProjectsContent = () => {
 	const newsContent = document.querySelector('#main_content__projects');
 	newsContent.hidden = false;
 };
 
-const showprojectContext = () => {
-	showprojectContent();
-	showprojectBarside();
+const showProjectsContext = () => {
+	showProjectsContent();
+	showProjectsSidebar();
 };
 
-const showprojectBarside = () => {
+const showProjectsSidebar = () => {
 	const newsContent = document.querySelector('#sidebar_projects_content');
 	newsContent.hidden = false;
 };
@@ -90,6 +95,21 @@ const showHackerBarside = () => {
 	newsContent.hidden = false;
 };
 
+const showContactContent = () => {
+	const contactContent = document.querySelector('#main-content__contact');
+	contactContent.hidden = false;
+};
+
+const showContactContext = () => {
+	showContactContent();
+	showContactSidebar();
+};
+
+const showContactSidebar = () => {
+	const contactContent = document.querySelector('#sidebar_contact_content');
+	contactContent.hidden = false;
+}
+
 const hideChildren = (parentNodeSelector) => {
 	const parentNode = document.querySelector(parentNodeSelector);
 
@@ -98,4 +118,4 @@ const hideChildren = (parentNodeSelector) => {
 	}
 };
 
-export {homeClickHandler, newsClickHandler, projectClickHandler, hackerClickHandler };
+export {homeClickHandler, newsClickHandler, projectClickHandler, hackerClickHandler, contactClickHandler};

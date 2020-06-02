@@ -4,7 +4,8 @@ const xml2js = require('xml2js');
 const rssConfig = {
 	urlList: [
 		'https://hacks.mozilla.org/feed/',
-		'https://developer.ibm.com/docloud/blog/feed/'
+		'https://developer.ibm.com/docloud/blog/feed/',
+		'https://developer.salesforce.com/blogs/feed'
 	]
 };
 

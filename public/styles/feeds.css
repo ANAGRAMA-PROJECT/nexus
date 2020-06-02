@@ -1,0 +1,77 @@
+@import 'root.css';
+
+.feed-item,
+.story-item {
+	display: flex;
+	flex-flow: row nowrap;
+	padding-bottom: 1rem;
+	height: 8rem;
+}
+
+.feed-badge,
+.story-badge {
+	display: flex;
+	flex: 1;
+	justify-content: center;
+	align-items: center;
+	cursor: pointer;
+}
+
+.feed-badge__form,
+.story-badge__form {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	color: var(--main-sidebar-color-pink);
+	border-radius: 50%;
+	min-height: 5rem;
+	min-width: 5rem;
+	font-family: var(--title-font-family), cursive;
+}
+
+.feed-badge__form {
+	background-color: #f8f5e0;
+}
+
+.feed-detail,
+.story-detail {
+	flex: 4;
+	padding-top: 0.5rem;
+	min-width: 0;
+}
+
+.feed-link:hover,
+.story-link:hover,
+.feed-title:hover,
+.story-title:hover,
+.feed-badge:hover + .feed-detail > .feed-title,
+.story-badge:hover + .story-detail > .story-title {
+	text-decoration: underline;
+}
+
+.feed-title,
+.story-title {
+	color: var(--main-sidebar-color-pink);
+	cursor: pointer;
+}
+
+.feed-link,
+.story-link {
+	color: var(--main-sidebar-color-blue);
+	text-decoration: none;
+	cursor: pointer;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	max-height: 1.2em;
+}
+
+.story-description {
+	text-overflow: ellipsis;
+	overflow: hidden;
+	padding-right: 1rem;
+	white-space: nowrap;
+}
+
+.story-meta {
+	color: #77878b;
+}

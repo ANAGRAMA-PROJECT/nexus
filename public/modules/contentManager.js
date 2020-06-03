@@ -1,4 +1,5 @@
 import * as templateManager from './templateManager.js';
+import * as contactForm from './contactForm.js';
 
 const loadSite = () => {
 	loadMainContent();
@@ -45,6 +46,9 @@ const loadContact = async (parentNode) => {
 	const contactContent = await templateManager.fetchTemplate('templates/contactContent.html');
 	hideFragmentContent (contactContent);
 	parentNode.appendChild(contactContent);
+	document
+		.querySelector('#contact-form')
+		.addEventListener('submit',contactForm.validateForm);
 }
 
 const hideFragmentContent = (domFragment) => {

@@ -50,6 +50,7 @@ const domContentLoadedHandler = async (event) => {
 	document
 		.querySelector('#navigation-bar_contact')
 		.addEventListener('click', eventsHandler.contactClickHandler);
+
 };
 
 document.addEventListener('DOMContentLoaded', domContentLoadedHandler);

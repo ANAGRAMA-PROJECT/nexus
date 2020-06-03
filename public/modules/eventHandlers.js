@@ -1,4 +1,3 @@
-
 const homeClickHandler = (event) => {
 	hideCurrentContext();
 	showHomeContext();
@@ -107,7 +106,7 @@ const showContactContext = () => {
 
 const showContactSidebar = () => {
 	const contactContent = document.querySelector('#sidebar_contact_content');
-	contactContent.hidden = false;
+	// contactContent.hidden = false;
 }
 
 const hideChildren = (parentNodeSelector) => {

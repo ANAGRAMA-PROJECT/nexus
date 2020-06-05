@@ -1,24 +1,65 @@
+import { Router } from './router.js';
+
+
+const attachMainListeners = () => {
+	Router.setRoute('home', setHomeView);
+
+	document
+		.querySelector('#navigation-bar_home')
+		.addEventListener('click', homeClickHandler);
+
+	document
+		.querySelector('#navigation-bar_news')
+		.addEventListener('click', feedsClickHandler);
+
+	document
+		.querySelector('#navigation-bar_projects')
+		.addEventListener('click', projectClickHandler);
+
+	document
+		.querySelector('#navigation-bar_hackers')
+		.addEventListener('click', hackersClickHandler);
+	document
+		.querySelector('#navigation-bar_contact')
+		.addEventListener('click', contactClickHandler);
+};
+
 const homeClickHandler = (event) => {
+	setHomeView();
+	Router.setRoute('home', setHomeView);
+};
+
+const setHomeView = () => {
 	hideCurrentContext();
 	showHomeContext();
 };
 
-const newsClickHandler = (event) => {
+const feedsClickHandler = (event) => {
+	setFeedsView();
+	Router.setRoute('feeds', setFeedsView);
+};
+
+const setFeedsView = (event) => {
 	hideCurrentContext();
 	showFeedsContext();
 };
 
 const projectClickHandler = (event) => {
+	setProjectsView();
+	Router.setRoute('projects', setProjectsView);
+};
+
+const setProjectsView = (event) => {
 	hideCurrentContext();
 	showProjectsContext();
 };
 
-const hackerClickHandler = (event) => {
-	hideCurrentContext();
-	showHackerContext();
+const contactClickHandler = (event) => {
+	setContactView();
+	Router.setRoute('contact',setContactView);
 };
 
-const contactClickHandler = (event) => {
+const setContactView = (event) => {
 	hideCurrentContext();
 	showContactContext();
 };
@@ -46,7 +87,6 @@ const showHomeContent = () => {
 	homeContent.hidden = false;
 };
 
-
 const showFeedsContent = () => {
 	const newsContent = document.querySelector('#main_content__news');
 	newsContent.hidden = false;
@@ -61,7 +101,6 @@ const showFeedsSidebar = () => {
 	const newsContent = document.querySelector('#sidebar_notice_content');
 	newsContent.hidden = false;
 };
-
 
 const showProjectsContent = () => {
 	const newsContent = document.querySelector('#main_content__projects');
@@ -78,25 +117,29 @@ const showProjectsSidebar = () => {
 	newsContent.hidden = false;
 };
 
+const hackersClickHandler = (event) => {
+	setHackersView();
+	Router.setRoute('hackers', setHackersView);
+};
 
-const showHackerContent = () => {
+const setHackersView = () => {
+	hideCurrentContext();
+	showHackersContext();
+}
+
+const showHackersContext = () => {
+	showHackersContent();
+	showHackersSidebar();
+};
+
+const showHackersContent = () => {
 	const hackersContent = document.querySelector('#main_content_hackers');
-	hackersContent.hidden = false;
+	// hackersContent.hidden = false;
 };
 
-const showHackerContext = () => {
-	showHackerContent();
-	showHackerBarside();
-};
-
-const showHackerBarside = () => {
+const showHackersSidebar = () => {
 	const newsContent = document.querySelector('#sidebar_hacker_content');
 	newsContent.hidden = false;
-};
-
-const showContactContent = () => {
-	const contactContent = document.querySelector('#main-content__contact');
-	contactContent.hidden = false;
 };
 
 const showContactContext = () => {
@@ -104,10 +147,15 @@ const showContactContext = () => {
 	showContactSidebar();
 };
 
+const showContactContent = () => {
+	const contactContent = document.querySelector('#main-content__contact');
+	contactContent.hidden = false;
+};
+
 const showContactSidebar = () => {
 	const contactContent = document.querySelector('#sidebar_contact_content');
 	// contactContent.hidden = false;
-}
+};
 
 const hideChildren = (parentNodeSelector) => {
 	const parentNode = document.querySelector(parentNodeSelector);
@@ -117,4 +165,4 @@ const hideChildren = (parentNodeSelector) => {
 	}
 };
 
-export {homeClickHandler, newsClickHandler, projectClickHandler, hackerClickHandler, contactClickHandler};
+export { attachMainListeners };

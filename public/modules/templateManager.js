@@ -5,10 +5,13 @@ const fetchTemplate = (path) => {
         try {
             const mimeType = 'text/html';
 
-            const response = await fetch(path);
+            const url = `${window.location.origin}/${path}`;
+
+            const response = await fetch(url);
             const txt = await response.text();
 
             const html = new DOMParser().parseFromString (txt, mimeType);
+            
             const template = html.querySelector ('template');
             const node = html.importNode (template.content, true);
 

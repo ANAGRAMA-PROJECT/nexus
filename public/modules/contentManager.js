@@ -30,6 +30,7 @@ const loadSidebarContent = async () => {
 
 // Cargar contenido de main
 const loadFeeds = async (parentNode) => {
+	console.log (window.location.origin);
 	const newsContent = await templateManager.fetchTemplate('templates/newsContent.html');
 	hideFragmentContent (newsContent);
 	parentNode.appendChild(newsContent);

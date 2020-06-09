@@ -1,6 +1,5 @@
 import { Router } from './router.js';
 
-
 const attachMainListeners = () => {
 	Router.setRoute('home', setHomeView);
 
@@ -25,8 +24,8 @@ const attachMainListeners = () => {
 };
 
 const homeClickHandler = (event) => {
-	setHomeView();
 	Router.setRoute('home', setHomeView);
+	setHomeView();
 };
 
 const setHomeView = () => {

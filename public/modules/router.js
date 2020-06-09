@@ -2,7 +2,7 @@ class Router {
     static routes = new Map();
 
 	static setRoute = (path, callback) => {
-		const relativePath = `/main/${path}`;
+		const relativePath = `/app/${path}`;
 		this.routes.set(relativePath, callback);
 
 		window.history.pushState(

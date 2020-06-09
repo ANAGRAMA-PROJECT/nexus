@@ -1,4 +1,5 @@
 import * as templateManager from './templateManager.js';
+import { Router } from './router.js';
 
 let feedChannels = Array();
 let feedTemplates = new Map();
@@ -43,7 +44,7 @@ const getFeedComponent = (feed, index) => {
 	const component = feedTemplates.get('feedItem').cloneNode(true);
 
 	const itemElement = component.querySelector('.feed-item');
-	itemElement.setAttribute('data-feed-index', index);
+	itemElement.setAttribute('data-channel-index', index);
 
 	const feedTitle = feed.rss.channel[0].title[0];
 	const feedLink = feed.rss.channel[0].link[0];
@@ -76,15 +77,30 @@ const getInitials = (feedTitle) => {
 	return initials;
 };
 
+const backToChannelsView = () => {
+	hideChildren('#main_content__news');
+	const channelsView = document.querySelector('#feed-channels-view');
+	channelsView.hidden = false;
+};
+
+const hideChildren = (parentNodeSelector) => {
+	const parentNode = document.querySelector(parentNodeSelector);
+
+	for (const child of parentNode.children) {
+		child.hidden = true;
+	}
+};
+
 const handleChannelSelection = (event) => {
 	const classList = event.target.classList;
 	const feedChannelsView = document.querySelector('#feed-channels-view');
 
 	if (classList.contains('feed-badge') || classList.contains('feed-title')) {
 		const feedItem = event.currentTarget;
-		const indexItem = feedItem.getAttribute('data-feed-index');
+		const indexItem = feedItem.getAttribute('data-channel-index');
 		feedChannelsView.hidden = true;
 		buildChannelSection(indexItem);
+		Router.setRoute('channel', backToChannelsView);
 	}
 };
 

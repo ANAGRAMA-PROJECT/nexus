@@ -55,7 +55,7 @@ const setProjectsView = (event) => {
 
 const contactClickHandler = (event) => {
 	setContactView();
-	Router.setRoute('contact',setContactView);
+	Router.setRoute('contact', setContactView);
 };
 
 const setContactView = (event) => {
@@ -124,7 +124,7 @@ const hackersClickHandler = (event) => {
 const setHackersView = () => {
 	hideCurrentContext();
 	showHackersContext();
-}
+};
 
 const showHackersContext = () => {
 	showHackersContent();
@@ -133,7 +133,7 @@ const showHackersContext = () => {
 
 const showHackersContent = () => {
 	const hackersContent = document.querySelector('#main_content_hackers');
-	// hackersContent.hidden = false;
+	hackersContent.hidden = false;
 };
 
 const showHackersSidebar = () => {

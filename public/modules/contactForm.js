@@ -1,16 +1,16 @@
 const validateForm = (event) => {
-    const text = `Form Submitted! Time stamp: ${event.timeStamp}`;
-    console.log(text);
+	const text = `Form Submitted! Time stamp: ${event.timeStamp}`;
+	console.log(text);
 
-    const fname = null;
-    const lname = null;
+	const fname = document.forms['contact-form']['fname'].value;
+	const lname = document.forms['contact-form']['lname'].value;
 
-    const formData = {
-        fname: fname,
-        lname: lname
-    };
+	for (let formField of document.forms['contact-form']) {
+		console.log(formField);
+		console.log(formField.value);
+	}
 
-    event.preventDefault();
+	event.preventDefault();
 };
 
 export { validateForm };

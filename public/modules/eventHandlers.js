@@ -4,22 +4,22 @@ const attachMainListeners = () => {
 	Router.setRoute('home', setHomeView);
 
 	document
-		.querySelector('#navigation-bar_home')
+		.querySelector('#navigation-bar__home')
 		.addEventListener('click', homeClickHandler);
 
 	document
-		.querySelector('#navigation-bar_news')
+		.querySelector('#navigation-bar__news')
 		.addEventListener('click', feedsClickHandler);
 
 	document
-		.querySelector('#navigation-bar_projects')
+		.querySelector('#navigation-bar__projects')
 		.addEventListener('click', projectClickHandler);
 
 	document
-		.querySelector('#navigation-bar_hackers')
+		.querySelector('#navigation-bar__hackers')
 		.addEventListener('click', hackersClickHandler);
 	document
-		.querySelector('#navigation-bar_contact')
+		.querySelector('#navigation-bar__contact')
 		.addEventListener('click', contactClickHandler);
 };
 
@@ -64,8 +64,8 @@ const setContactView = (event) => {
 };
 
 const hideCurrentContext = () => {
-	const homeContentSelector = '#main_content';
-	const sideBarSelector = '#content_container__sidebar';
+	const homeContentSelector = '#main-container__content';
+	const sideBarSelector = '#main-container__sidebar';
 
 	hideChildren(homeContentSelector);
 	hideChildren(sideBarSelector);
@@ -77,17 +77,17 @@ const showHomeContext = () => {
 };
 
 const showHomeSidebar = () => {
-	const sidebarHomeContent = document.querySelector('#sidebar_home__content');
+	const sidebarHomeContent = document.querySelector('#sidebar-home__content');
 	sidebarHomeContent.hidden = false;
 };
 
 const showHomeContent = () => {
-	const homeContent = document.querySelector('#main_content__home');
+	const homeContent = document.querySelector('#main-content__home');
 	homeContent.hidden = false;
 };
 
 const showFeedsContent = () => {
-	const newsContent = document.querySelector('#main_content__news');
+	const newsContent = document.querySelector('#main-content__news');
 	newsContent.hidden = false;
 };
 
@@ -97,12 +97,12 @@ const showFeedsContext = () => {
 };
 
 const showFeedsSidebar = () => {
-	const newsContent = document.querySelector('#sidebar_notice_content');
+	const newsContent = document.querySelector('#sidebar-notice__content');
 	newsContent.hidden = false;
 };
 
 const showProjectsContent = () => {
-	const newsContent = document.querySelector('#main_content__projects');
+	const newsContent = document.querySelector('#main-content__projects');
 	newsContent.hidden = false;
 };
 
@@ -112,7 +112,7 @@ const showProjectsContext = () => {
 };
 
 const showProjectsSidebar = () => {
-	const newsContent = document.querySelector('#sidebar_projects_content');
+	const newsContent = document.querySelector('#sidebar-notice__content');
 	newsContent.hidden = false;
 };
 
@@ -132,12 +132,12 @@ const showHackersContext = () => {
 };
 
 const showHackersContent = () => {
-	const hackersContent = document.querySelector('#main_content_hackers');
+	const hackersContent = document.querySelector('#main-content__hackers');
 	hackersContent.hidden = false;
 };
 
 const showHackersSidebar = () => {
-	const newsContent = document.querySelector('#sidebar_hacker_content');
+	const newsContent = document.querySelector('#sidebar-hackers__content');
 	newsContent.hidden = false;
 };
 
@@ -152,7 +152,7 @@ const showContactContent = () => {
 };
 
 const showContactSidebar = () => {
-	const contactContent = document.querySelector('#sidebar_contact_content');
+	const contactContent = document.querySelector('#sidebar-contact_content');
 	// contactContent.hidden = false;
 };
 

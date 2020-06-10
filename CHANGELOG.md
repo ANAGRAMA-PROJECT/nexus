@@ -1,3 +1,7 @@
+**2020-10-06 Alberto Mata angelhz@comunidad.unam.mx**
+
+-   _public/* Fixing BEM and changing general styles.
+
 **2020-04-06 Alberto Mata angelhz@comunidad.unam.mx**
 
 -   _public/modules/router.js_ Introducing route handling for the single page application (SPA).

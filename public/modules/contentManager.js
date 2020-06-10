@@ -8,7 +8,7 @@ const loadSite = () => {
 };
 
 const loadMainContent = () => {
-	const mainContent = document.querySelector('#main_content');
+	const mainContent = document.querySelector('#main-container__content');
 	loadFeeds(mainContent);
 	loadProjects(mainContent);
 	loadContact(mainContent);
@@ -17,9 +17,7 @@ const loadMainContent = () => {
 
 // Cargar contenido de sidebar
 const loadSidebarContent = async () => {
-	const sidebarContent = document.querySelector(
-		'#content_container__sidebar'
-	);
+	const sidebarContent = document.querySelector('#main-container__sidebar');
 	const homeSidebar = await templateManager.fetchTemplate(
 		'templates/sidebarContents.html'
 	);

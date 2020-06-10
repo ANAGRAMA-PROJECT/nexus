@@ -1,19 +1,21 @@
+@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@500&family=Lato:wght@300&display=swap');
+
 :root {
-	--title-font-family: 'Frijole';
-	--content-font-family: 'Lato';
+	--title-font-family: 'IBM Plex Sans', sans-serif;
+	--content-font-family: 'Lato', sans-serif;
 
 	--main-background-color-dark: #2a2726;
-	--main-title-color-dark: #a80038;
+	--main-title-color-dark: #f8f5e0;
 	--main-sidebar-color-pink: #fd0054;
 	--main-sidebar-color-pis: #4ae3b5;
 	--main-sidebar-color-blue: #00fff0;
 	--main-sidebar-icon-white: #fbf9fa;
-	--main-title-font-size: 4rem;
 	--main-content-color-dark: #f8f5e0;
-	--small-title-font-size: 1.5rem;
+	--main-title-font-size: 4rem;
+	--small-title-font-size: 2rem;
 
-	--navigation-bar-padding: 1rem 0rem 1rem 0rem;
-	--navigation-bar-elements-padding: 0rem 4rem 0rem 4rem;
+	--main-navigation__bar-padding: 1rem 0rem 1rem 0rem;
+	--main-navigation__bar-elements-padding: 0rem 4rem 0rem 4rem;
 }
 
 * {

@@ -1,35 +1,35 @@
 const htmlNodes = new Map();
 
 const fetchTemplate = (path) => {
-    const promise = new Promise (async (resolve, reject) =>  {
-        try {
-            const mimeType = 'text/html';
+	const promise = new Promise(async (resolve, reject) => {
+		try {
+			const mimeType = 'text/html';
 
-            const url = `${window.location.origin}/${path}`;
+			const url = `${window.location.origin}/${path}`;
 
-            const response = await fetch(url);
-            const txt = await response.text();
+			const response = await fetch(url);
+			const txt = await response.text();
 
-            const html = new DOMParser().parseFromString (txt, mimeType);
-            
-            const template = html.querySelector ('template');
-            const node = html.importNode (template.content, true);
+			const html = new DOMParser().parseFromString(txt, mimeType);
 
-            resolve (node);
-        } catch (e) {
-            reject (e);
-        }
-    });
+			const template = html.querySelector('template');
+			const node = html.importNode(template.content, true);
 
-    return promise;
-}
+			resolve(node);
+		} catch (e) {
+			reject(e);
+		}
+	});
+
+	return promise;
+};
 
 const getHtmlNode = (nodeName) => {
-    return htmlNodes.set (nodeName);
+	return htmlNodes.set(nodeName);
 };
 
 const setHtmlNode = (nodeName, domNode) => {
-    htmlNodes.set (nodeName, domNode);
+	htmlNodes.set(nodeName, domNode);
 };
 
-export {getHtmlNode, setHtmlNode, fetchTemplate};
+export { getHtmlNode, setHtmlNode, fetchTemplate };

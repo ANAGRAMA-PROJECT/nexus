@@ -23,7 +23,7 @@ const buildChannelsSection = async (feedsList) => {
 	feedTemplates.set('feedItem', feedItemTemplate);
 
 	// Create content view
-	const feedsSection = document.querySelector('#main_content__news');
+	const feedsSection = document.querySelector('#main-content__news');
 	const feedsView = document.createElement('div');
 	feedsView.id = 'feed-channels-view';
 	feedsSection.appendChild(feedsView);
@@ -78,7 +78,7 @@ const getInitials = (feedTitle) => {
 };
 
 const backToChannelsView = () => {
-	hideChildren('#main_content__news');
+	hideChildren('#main-content__news');
 	const channelsView = document.querySelector('#feed-channels-view');
 	channelsView.hidden = false;
 };
@@ -95,7 +95,10 @@ const handleChannelSelection = (event) => {
 	const classList = event.target.classList;
 	const feedChannelsView = document.querySelector('#feed-channels-view');
 
-	if (classList.contains('feed-badge') || classList.contains('feed-title')) {
+	if (
+		classList.contains('fedd-item__badge') ||
+		classList.contains('feed-title')
+	) {
 		const feedItem = event.currentTarget;
 		const indexItem = feedItem.getAttribute('data-channel-index');
 		feedChannelsView.hidden = true;
@@ -112,7 +115,7 @@ const buildChannelSection = async (indexItem) => {
 	feedTemplates.set('storyItem', storyItemTemplate);
 
 	// Create content view
-	const feedsSection = document.querySelector('#main_content__news');
+	const feedsSection = document.querySelector('#main-content__news');
 	const storiesView = document.createElement('div');
 	storiesView.id = 'channel-stories-view';
 	storiesView.setAttribute('data-channel-index', indexItem);
@@ -158,12 +161,12 @@ const getStoryComponent = (story, index) => {
 	descriptionElement.innerHTML = story.description[0];
 	const storyDescription = descriptionElement.innerText;
 
-	component.querySelector('.story-title').innerText = storyTitle;
-	component.querySelector('.story-link').innerText = storyLink;
-	component.querySelector('.story-author').innerText = storyAuthor;
-	component.querySelector('.story-date').innerText = storyDate;
+	component.querySelector('.story-detail__title').innerText = storyTitle;
+	component.querySelector('.story-detail__link').innerText = storyLink;
+	component.querySelector('.story-meta__author').innerText = storyAuthor;
+	component.querySelector('.story-meta__date').innerText = storyDate;
 
-	component.querySelector('.story-description').innerHTML = storyDescription;
+	component.querySelector('.story-detail__description').innerHTML = storyDescription;
 
 	return component;
 };
@@ -172,10 +175,10 @@ const handleStoryItemClick = (event) => {
 	const classList = event.target.classList;
 
 	if (
-		classList.contains('story-badge') ||
-		classList.contains('story-title') ||
+		classList.contains('story-item__badge') ||
+		classList.contains('story-detail__title') ||
 		classList.contains('story-badge__form') ||
-		classList.contains('story-badge__icon')
+		classList.contains('story-form__icon')
 	) {
 		const storySelectionEvent = new CustomEvent('storyselection', {
 			bubbles: true,
@@ -210,7 +213,7 @@ const buildStoryContentSection = (channelIndex, storyIndex) => {
 	const storyContent = getStoryContent(channelIndex, storyIndex);
 
 	// Create content view
-	const feedsSection = document.querySelector('#main_content__news');
+	const feedsSection = document.querySelector('#main-content__news');
 	const storyContentSection = document.createElement('div');
 	storyContentSection.id = 'story-content-view';
 	storyContentSection.setAttribute('data-story-index', storyIndex);

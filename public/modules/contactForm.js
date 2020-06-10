@@ -7,10 +7,10 @@ const validateForm = (event) => {
 
 	for (let formField of document.forms['contact-form']) {
 		console.log(formField);
-        console.log(formField.value);
-        if(formField.value == ""){
-            console.log(formField.labels[0].textContent);
-        }
+		console.log(formField.value);
+		if (formField.value == '') {
+			console.log(formField.labels[0].textContent);
+		}
 	}
 
 	event.preventDefault();

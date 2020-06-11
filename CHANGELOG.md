@@ -1,6 +1,8 @@
 **2020-10-06 Alberto Mata angelhz@comunidad.unam.mx**
 
--   _public/* Fixing BEM and changing general styles.
+-   _<all-files>_ Applying prettier to all files.
+-   _public/media/background.png_ Adding a supplementary background picture.
+-   _public/\*_ Fixing BEM and changing general styles.
 
 **2020-04-06 Alberto Mata angelhz@comunidad.unam.mx**
 

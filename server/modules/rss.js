@@ -34,22 +34,18 @@ const fetchStoriesRouter = (req, res) => {
 	});
 
 	Promise.all(calloutPromises).then((responses) => {
-
 		promiseValues = responses.map((response) => {
 			return parseXml(response.data);
 		});
 
 		Promise.all(promiseValues).then((feedChannels) => {
-
-			responseValues = feedChannels.map (channel => {
-				return channel; 
-			}); 
+			responseValues = feedChannels.map((channel) => {
+				return channel;
+			});
 
 			res.send(responseValues);
 		});
-
 	});
-
 };
 
 exports.fetchStoriesRouter = fetchStoriesRouter;

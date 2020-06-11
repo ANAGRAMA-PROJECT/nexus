@@ -10,13 +10,13 @@ app.set('port', process.env.PORT || 5000);
 app.use('/', express.static(path.join(__dirname, '../public/'), options));
 
 app.use('/app/*', (request, response) => {
-	response.location ('back');
-	response.redirect ('/');
+	response.location('back');
+	response.redirect('/');
 });
 
 app.get('/stories', rss.fetchStoriesRouter);
 app.use('/contact-form', (request, response) => {
-	console.log (request);
+	console.log(request);
 });
 
 app.listen(app.get('port'), function () {

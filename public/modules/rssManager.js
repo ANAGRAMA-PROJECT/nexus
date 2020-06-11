@@ -166,7 +166,9 @@ const getStoryComponent = (story, index) => {
 	component.querySelector('.story-meta__author').innerText = storyAuthor;
 	component.querySelector('.story-meta__date').innerText = storyDate;
 
-	component.querySelector('.story-detail__description').innerHTML = storyDescription;
+	component.querySelector(
+		'.story-detail__description'
+	).innerHTML = storyDescription;
 
 	return component;
 };

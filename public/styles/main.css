@@ -8,7 +8,6 @@ p {
 #main {
 	height: 100vh;
 	overflow: hidden;
-	background-image: url('../media/background.png');
 	background-color: var(--dark-background);
 	background-position: center;
 }
@@ -65,26 +64,24 @@ p {
 	flex-flow: row wrap;
 
 	position: relative;
-	height: 85%;
+	height: 100%;
 }
 
 #main-container__sidebar {
 	/* Alignment */
 	flex: 1;
-	margin: 2rem;
-
+	background-color: var(--dark-background);
 	box-shadow: var(--elevation-2dp);
+	margin-right: 1rem;
+	padding: 2rem;
 }
 
 #main-container__content {
-	height: 100%;
 	padding: 2rem;
 	overflow-y: scroll;
 	flex: 2;
-	margin-top: 2rem;
-	margin-bottom: 2rem;
+	height: 100%;
 	background-color: var(--dark-background);
-	box-shadow: var(--elevation-2dp);
 }
 
 #colective-mention {
@@ -94,15 +91,17 @@ p {
 #main-container__leftover {
 	/* Alignment */
 	flex: 1;
+	margin-left: 1rem;
 }
 
 #main-header {
 	display: flex;
 	min-height: 5rem;
 	position: sticky;
-	flex-grow: row nowrap;
+	flex-flow: row nowrap;
 	top: 0;
-	box-shadow: var(--elevation-2dp);
+	z-index: 10;
+	box-shadow: var(--elevation-3dp);
 }
 
 #main-header__logo {
@@ -110,6 +109,8 @@ p {
 	display: flex;
 	align-items: center;
 	justify-content: center;
+
+	border-bottom: 2px solid var(--dark-background);
 }
 
 #logo__text {
@@ -152,7 +153,6 @@ p {
 	border-color: var(--dark-headers);
 }
 
-
 .sidebar-home {
 	width: 5rem;
 	height: 100vh;
@@ -171,7 +171,7 @@ p {
 	width: 5rem;
 	height: 100vh;
 	position: relative;
-	background-color: var(--main-sidebar-color-blue);
+	background-color: var(--dark-blue);
 }
 
 .sidebar-nav__list {
@@ -190,4 +190,18 @@ p {
 	height: 5rem;
 	color: var(--main-sidebar-icon-white);
 	text-decoration: none;
+}
+
+.sidebar-item {
+	display: flex;
+	justify-content: center;
+	font: var(--sidebar-item);
+	align-items: center;
+	border-bottom: 2px solid var(--dark-background);
+	cursor: pointer;
+}
+
+
+.sidebar-item:hover {
+	border-bottom: 2px solid var(--dark-blue);
 }

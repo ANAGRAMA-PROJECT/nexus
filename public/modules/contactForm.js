@@ -9,7 +9,7 @@ const validateForm = (event) => {
 		console.log(formField.checkValidity());
 		if (formField.value == '') {
 			console.log(formField.labels[0].textContent);
-			formField.setCustomValidity('youaregay');
+			formField.setCustomValidity('foo');
 			formField.reportValidity();
 		} else {
 			formField.setCustomValidity('');

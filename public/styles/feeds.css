@@ -55,7 +55,7 @@
 
 .feed-link,
 .story-detail__link {
-	color: var(--main-sidebar-color-blue);
+	color: var(--dark-blue);
 	text-decoration: none;
 	cursor: pointer;
 	overflow: hidden;
@@ -75,7 +75,7 @@
 }
 
 #story-content-view a {
-	color: var(--main-sidebar-color-blue);
+	color: var(--dark-blue);
 	text-decoration: none;
 	cursor: pointer;
 	overflow: hidden;

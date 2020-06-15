@@ -4,22 +4,22 @@ const attachMainListeners = () => {
 	Router.setRoute('home', setHomeView);
 
 	document
-		.querySelector('#navigation-bar__home')
+		.querySelector('#menu__home')
 		.addEventListener('click', homeClickHandler);
 
 	document
-		.querySelector('#navigation-bar__news')
+		.querySelector('#menu__news')
 		.addEventListener('click', feedsClickHandler);
 
 	document
-		.querySelector('#navigation-bar__projects')
+		.querySelector('#menu__projects')
 		.addEventListener('click', projectClickHandler);
 
 	document
-		.querySelector('#navigation-bar__hackers')
+		.querySelector('#menu__hackers')
 		.addEventListener('click', hackersClickHandler);
 	document
-		.querySelector('#navigation-bar__contact')
+		.querySelector('#menu__contact')
 		.addEventListener('click', contactClickHandler);
 };
 

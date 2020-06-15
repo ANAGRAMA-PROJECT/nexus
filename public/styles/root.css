@@ -1,11 +1,13 @@
-@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@500&family=Lato:wght@300&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@500&family=Source+Sans+Pro&display=swap');
 
 :root {
-	--title-font-family: 'IBM Plex Sans', sans-serif;
-	--content-font-family: 'Lato', sans-serif;
+	--title-font-family: 'Roboto Mono', monospace;;
+	--content-font-family: 'Source Sans Pro', sans-serif;
 
-	--main-background-color-dark: #2a2726;
-	--main-title-color-dark: #f8f5e0;
+	--dark-background: #2a2726;
+	--dark-text-content: #f8f5e0;
+	--dark-headers: #a80038;
+
 	--main-sidebar-color-pink: #fd0054;
 	--main-sidebar-color-pis: #4ae3b5;
 	--main-sidebar-color-blue: #00fff0;
@@ -14,8 +16,8 @@
 	--main-title-font-size: 4rem;
 	--small-title-font-size: 2rem;
 
-	--main-navigation__bar-padding: 1rem 0rem 1rem 0rem;
-	--main-navigation__bar-elements-padding: 0rem 4rem 0rem 4rem;
+	--text-logo: normal small-caps 900 1.6rem 'Roboto Mono', monospace;
+
 }
 
 * {

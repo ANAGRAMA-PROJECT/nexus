@@ -59,6 +59,10 @@ const loadContact = async (parentNode) => {
 	document
 		.querySelector('#contact-form')
 		.addEventListener('submit', contactForm.validateForm);
+
+	document
+		.querySelector('#submitButton')
+		.addEventListener('click', contactForm.handleSend);
 };
 
 const hideFragmentContent = (domFragment) => {

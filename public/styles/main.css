@@ -71,6 +71,9 @@ p {
 #main-container__sidebar {
 	/* Alignment */
 	flex: 1;
+	margin: 2rem;
+
+	box-shadow: var(--elevation-2dp);
 }
 
 #main-container__content {
@@ -81,9 +84,7 @@ p {
 	margin-top: 2rem;
 	margin-bottom: 2rem;
 	background-color: var(--dark-background);
-	box-shadow: 0px 1px 5px 0px rgba(0, 0, 0, 0.2),
-		0px 2px 2px 0px rgba(0, 0, 0, 0.14),
-		0px 3px 1px -2px rgba(0, 0, 0, 0.12);
+	box-shadow: var(--elevation-2dp);
 }
 
 #colective-mention {
@@ -97,11 +98,11 @@ p {
 
 #main-header {
 	display: flex;
+	min-height: 5rem;
+	position: sticky;
 	flex-grow: row nowrap;
 	top: 0;
-	box-shadow: 0px 1px 5px 0px rgba(0, 0, 0, 0.2),
-		0px 2px 2px 0px rgba(0, 0, 0, 0.14),
-		0px 3px 1px -2px rgba(0, 0, 0, 0.12);
+	box-shadow: var(--elevation-2dp);
 }
 
 #main-header__logo {
@@ -126,16 +127,31 @@ p {
 	display: flex;
 	flex-flow: row nowrap;
 
-	font-family: var(--title-font-family);
-	color: var(--dark-headers);
-	font-size: var(--small-title-font-size);
+	font-size: var(--small-headers);
 	text-align: center;
+	align-items: stretch;
+	justify-content: center;
 }
 
-#main-header__menu > span {
+#main-header__menu > div {
 	flex: 1 0 20%;
 	cursor: pointer;
+
+	display: flex;
+	align-items: center;
+	justify-content: center;
+
+	color: var(--dark-headers);
+	font-family: var(--title-font-family);
+
+	border-bottom: 2px solid var(--dark-background);
 }
+
+#main-header__menu > div:hover {
+	border-bottom: 2px solid var(--dark-headers);
+	border-color: var(--dark-headers);
+}
+
 
 .sidebar-home {
 	width: 5rem;

@@ -8,6 +8,7 @@
 			name="Contact"
 			action="/action_page.php"
 			method="post"
+			novalidate
 		>
 			<label for="fname">Nombre</label><br />
 			<input
@@ -41,54 +42,7 @@
 				placeholder="Escribe algo.."
 				style="height: 170px;"
 			></textarea>
-			<input type="submit" value="Mandar" />
-		</form>
-	</div>
-</template>
-<template>
-	<div id="main-content__contact">
-		<h2>Contáctanos</h2>
-		<p>Críticas, comentarios</p>
-
-		<form
-			id="contact-form"
-			name="Contact"
-			action="/action_page.php"
-			method="post"
-		>
-			<label for="fname">Nombre</label><br />
-			<input
-				type="text"
-				id="fname"
-				name="firstname"
-				placeholder="Tu nombre.."
-			/><br />
-			<label for="lname">Apellidos</label><br />
-			<input
-				type="text"
-				id="lname"
-				name="lastname"
-				placeholder="Tus apellidos.."
-			/><br />
-			<label for="found">¿Cómo nos descubriste?</label><br />
-			<select id="found" name="found">
-				<option value="" disabled selected hidden
-					>Elige una opción..</option
-				>
-				<option value="perdido">Me perdí</option>
-				<option value="popup"
-					>Caí en uno de sus pop ups en un directo ilegal</option
-				>
-				<option value="rickroll">Rick Roll</option> </select
-			><br />
-			<label for="subject">Asunto</label><br />
-			<textarea
-				id="subject"
-				name="subject"
-				placeholder="Escribe algo.."
-				style="height: 170px;"
-			></textarea>
-			<input type="submit" value="Mandar" />
+			<input id="submitButton" type="submit" value="Mandar" />
 		</form>
 	</div>
 </template>

@@ -8,7 +8,6 @@
 			name="Contact"
 			action="/action_page.php"
 			method="post"
-			novalidate
 		>
 			<label for="fname">Nombre</label><br />
 			<input
@@ -16,6 +15,7 @@
 				id="fname"
 				name="firstname"
 				placeholder="Tu nombre.."
+				required
 			/><br />
 			<label for="lname">Apellidos</label><br />
 			<input
@@ -23,6 +23,7 @@
 				id="lname"
 				name="lastname"
 				placeholder="Tus apellidos.."
+				required
 			/><br />
 			<label for="found">¿Cómo nos descubriste?</label><br />
 			<select id="found" name="found">

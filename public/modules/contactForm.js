@@ -8,12 +8,7 @@ const validateForm = (event) => {
 		console.log(formField.value);
 		console.log(formField.checkValidity());
 		if (formField.value == '') {
-			console.log(formField.labels[0].textContent);
-			formField.setCustomValidity('foo');
-			formField.reportValidity();
 		} else {
-			formField.setCustomValidity('');
-			formField.reportValidity();
 		}
 
 	}
@@ -23,7 +18,6 @@ const validateForm = (event) => {
 
 const handleSend = (event) => {
 	console.log('foo');
-	document.querySelector('#contact-form').setCustomValidity('');
 	document.querySelector('#contact-form').reportValidity();
 
 }

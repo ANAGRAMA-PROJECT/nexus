@@ -1,10 +1,3 @@
-p {
-	text-align: justify;
-	text-justify: inter-word;
-	line-height: 2;
-	letter-spacing: 1px;
-}
-
 #main {
 	height: 100vh;
 	overflow: hidden;
@@ -68,19 +61,21 @@ p {
 }
 
 #main-container__sidebar {
-	/* Alignment */
 	flex: 1;
 	background-color: var(--dark-background);
 	box-shadow: var(--elevation-2dp);
 	margin-right: 1rem;
 	padding: 2rem;
+	animation: var(--animation-fade-in) 1s;
 }
 
 #main-container__content {
+	position: relative;
 	padding: 2rem;
 	overflow-y: scroll;
 	flex: 2;
-	height: 100%;
+	height: 90%;
+	max-height: 90%;
 	background-color: var(--dark-background);
 }
 
@@ -102,6 +97,7 @@ p {
 	top: 0;
 	z-index: 10;
 	box-shadow: var(--elevation-3dp);
+	animation: var(--animation-fade-in) 1s;
 }
 
 #main-header__logo {
@@ -111,6 +107,7 @@ p {
 	justify-content: center;
 
 	border-bottom: 2px solid var(--dark-background);
+	animation: var(--animation-fade-in) var(--fade-in-duration);
 }
 
 #logo__text {
@@ -146,6 +143,7 @@ p {
 	font-family: var(--title-font-family);
 
 	border-bottom: 2px solid var(--dark-background);
+	animation: var(--animation-fade-in) var(--fade-in-duration);
 }
 
 #main-header__menu > div:hover {
@@ -197,11 +195,21 @@ p {
 	justify-content: center;
 	font: var(--sidebar-item);
 	align-items: center;
-	border-bottom: 2px solid var(--dark-background);
 	cursor: pointer;
+	animation: var(--animation-fade-in) var(--fade-in-duration);  
 }
 
 
 .sidebar-item:hover {
-	border-bottom: 2px solid var(--dark-blue);
+	/* border-bottom: 2px solid var(--dark-blue); */
 }
+
+
+p {
+	text-align: justify;
+	text-justify: inter-word;
+	line-height: 2;
+	letter-spacing: 1px;
+	animation: var(--animation-fade-in-up) var(--fade-in-up-duration);
+}
+

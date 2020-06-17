@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=PT+Sans&family=Roboto+Mono:wght@500&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=PT+Sans&family=Roboto+Mono:wght@700&display=swap');
 
 :root {
 	/* Font-related variables */
@@ -30,13 +30,13 @@
 	--dark-background: #2a2726;
 	--background-color: var(--dark-background);
 	--dark-text-content: #f8f5e0;
-	--dark-headers: #a80038;
+	--dark-headers: #ecf0f1 ;
 	--dark-blue: #00fff0;
 	--dark-green: #4ae3b5;
 
 	--main-sidebar-color-pink: #fd0054;
 	--main-sidebar-icon-white: #fbf9fa;
-	--main-content-color-dark: #f8f5e0;
+	--main-content-color-dark: var(--dark-text-content);
 	--main-title-font-size: 4rem;
 	--small-headers: 1.2rem;
 }

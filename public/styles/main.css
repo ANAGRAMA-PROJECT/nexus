@@ -3,6 +3,10 @@
 	overflow: hidden;
 	background-color: var(--dark-background);
 	background-position: center;
+	background-image: url('../media/background.jpg'); ;
+	background-position: center;
+	background-blend-mode: overlay;
+	animation: var(--animation-fade-in) 1s;
 }
 
 .background {
@@ -62,7 +66,6 @@
 
 #main-container__sidebar {
 	flex: 1;
-	background-color: var(--dark-background);
 	margin-right: 1rem;
 	padding: 2rem;
 	animation: var(--animation-fade-in) 1s;
@@ -75,7 +78,6 @@
 	flex: 6;
 	height: 90%;
 	max-height: 90%;
-	background-color: var(--dark-background);
 }
 
 #colective-mention {
@@ -104,7 +106,6 @@
 	align-items: center;
 	justify-content: center;
 
-	border-bottom: 2px solid var(--dark-background);
 	animation: var(--animation-fade-in) var(--fade-in-duration);
 }
 
@@ -140,7 +141,6 @@
 	color: var(--dark-headers);
 	font-family: var(--title-font-family);
 
-	border-bottom: 2px solid var(--dark-background);
 	animation: var(--animation-fade-in) var(--fade-in-duration);
 }
 

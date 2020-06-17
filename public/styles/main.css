@@ -63,7 +63,6 @@
 #main-container__sidebar {
 	flex: 1;
 	background-color: var(--dark-background);
-	box-shadow: var(--elevation-2dp);
 	margin-right: 1rem;
 	padding: 2rem;
 	animation: var(--animation-fade-in) 1s;
@@ -73,7 +72,7 @@
 	position: relative;
 	padding: 2rem;
 	overflow-y: scroll;
-	flex: 2;
+	flex: 6;
 	height: 90%;
 	max-height: 90%;
 	background-color: var(--dark-background);
@@ -96,7 +95,6 @@
 	flex-flow: row nowrap;
 	top: 0;
 	z-index: 10;
-	box-shadow: var(--elevation-3dp);
 	animation: var(--animation-fade-in) 1s;
 }
 
@@ -144,11 +142,6 @@
 
 	border-bottom: 2px solid var(--dark-background);
 	animation: var(--animation-fade-in) var(--fade-in-duration);
-}
-
-#main-header__menu > div:hover {
-	border-bottom: 2px solid var(--dark-headers);
-	border-color: var(--dark-headers);
 }
 
 .sidebar-home {
@@ -213,3 +206,8 @@ p {
 	animation: var(--animation-fade-in-up) var(--fade-in-up-duration);
 }
 
+.home-text__presentation {
+	padding: 5rem;
+	font-size: 2.5rem;
+	text-align: center;
+}

@@ -6,9 +6,11 @@ console.debug('Loading page... ');
 
 rssManager.fetchStories();
 
+
 const domContentLoadedHandler = async (event) => {
 	contentManager.loadSite();
 	eventHandlers.attachMainListeners();
+	document.querySelector('#main-content__home').focus();
 };
 
 document.addEventListener('DOMContentLoaded', domContentLoadedHandler);

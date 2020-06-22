@@ -139,7 +139,7 @@
 	justify-content: center;
 }
 
-#main-header__menu > div {
+menu-item {
 	flex: 1 0 20%;
 	cursor: pointer;
 

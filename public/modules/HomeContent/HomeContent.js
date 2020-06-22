@@ -1,8 +1,8 @@
-import { html } from 'https://unpkg.com/lit-html?module';
+import { html, render } from 'https://unpkg.com/lit-html?module';
 
-export class Home {
-	static render = (context) => html`
-		<div id=${context.elementId}>
+export class HomeContent extends HTMLElement {
+	connectedCallback() {
+		const template = html`
 			<div class="home-text__presentation">
 				<p>
 					El
@@ -31,6 +31,10 @@ export class Home {
 			<div class="home-text__presentation">
 				<p>Crea con nosotros</p>
 			</div>
-		</div>
-	`;
+		`;
+
+		render(template, this);
+	}
 }
+
+customElements.define('home-content', HomeContent);

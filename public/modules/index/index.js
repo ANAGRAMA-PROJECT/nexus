@@ -3,6 +3,7 @@ import { Home } from '../home/home.js';
 import { Header } from '../header/header.js';
 import { Projects } from '../projects/projects.js';
 import { Feeds } from '../feeds/feeds.js';
+import { Contact } from '../contact/contact.js';
 
 export class Main {
 	static currentContext = {
@@ -21,11 +22,11 @@ export class Main {
 		},
 		feeds: {
 			name: 'feeds',
-			elementId: 'main-content__news'
+			elementId: 'main-content__feeds'
 		},
 		contact: {
-			name: 'feeds',
-			elementId: 'main-content__news'
+			name: 'contact',
+			elementId: 'main-content__contact'
 		}
 	};
 
@@ -39,10 +40,10 @@ export class Main {
 					${Home.render(this.contextsList['home'])}
 					${Projects.render(this.contextsList['projects'])}
 					${Feeds.render(this.contextsList['feeds'])}
+					${Contact.render(this.contextsList['contact'])}
 				</div>
 				<div id="main-container__leftover"></div>
 			</section>
-
 		</div>
 	`;
 
@@ -65,7 +66,6 @@ export class Main {
 		);
 		element.hidden = true;
 	};
-
 }
 
 render(Main.render(), document.body);

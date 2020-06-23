@@ -2,7 +2,6 @@ import { html, render } from 'https://unpkg.com/lit-html?module';
 import './MenuItem.js';
 
 export class MainHeader extends HTMLElement {
-
 	menuItems = [
 		{
 			id: 'menu__home',

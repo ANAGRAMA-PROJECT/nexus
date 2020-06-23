@@ -29,15 +29,14 @@ export class FeedItem extends HTMLElement {
 
 	handleChannelSelection = (event) => {
 		const classList = event.target.classList;
-        const channelSelectEvent = new CustomEvent('channel-select');
+		const channelSelectEvent = new CustomEvent('channel-select');
 
 		if (
 			classList.contains('fedd-item__badge') ||
 			classList.contains('feed-title')
 		) {
-            this.dispatchEvent(channelSelectEvent);
-        }
-
+			this.dispatchEvent(channelSelectEvent);
+		}
 	};
 
 	getInitials = (title) => {

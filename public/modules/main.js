@@ -6,7 +6,6 @@ console.debug('Loading page... ');
 
 rssManager.fetchStories();
 
-
 const domContentLoadedHandler = async (event) => {
 	contentManager.loadSite();
 	eventHandlers.attachMainListeners();

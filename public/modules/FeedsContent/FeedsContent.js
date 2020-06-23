@@ -1,6 +1,6 @@
 import { html, render } from 'https://unpkg.com/lit-html?module';
 import { FeedsManager } from './FeedsManager.js';
-import './FeedItem.js';
+import './FeedChannels.js';
 
 export class FeedsContent extends HTMLElement {
 	feedsChannelsData = [];
@@ -14,6 +14,11 @@ export class FeedsContent extends HTMLElement {
 		this.renderComponent();
 	}
 
+	fetchStories = async () => {
+		const feedChannels = await FeedsManager.fetchStories();
+		this.feedChannels = feedChannels;
+	};
+
 	constructor() {
 		super();
 		this.fetchStories();
@@ -23,37 +28,15 @@ export class FeedsContent extends HTMLElement {
 		this.renderComponent();
 	}
 
-	fetchStories = async () => {
-		const feedChannels = await FeedsManager.fetchStories();
-		this.feedChannels = feedChannels;
-	};
-
 	renderComponent = () => {
-		const feedChannels = this.feedChannels;
-
-		const channelComponents = feedChannels.map((channel, index) => {
-			return html`<feed-item
-				index=${index}
-				title=${channel.rss.channel[0].title[0]}
-				link=${channel.rss.channel[0].link[0]}
-				description=${channel.rss.channel[0].description[0]}
-				@channel-select=${this.handleChannelSelect}
-			></feed-item>`;
-		});
-
-		const template = html`
-			<div id="feed-channels">
-				${channelComponents}
-			</div>
-		`;
+		const template = html` <feed-channels></feed-channels> `;
 
 		render(template, this);
 	};
 
 	handleChannelSelect = (event) => {
 		console.log(event.target.getAttribute('index'));
-	}
-
+	};
 }
 
 customElements.define('feeds-content', FeedsContent);

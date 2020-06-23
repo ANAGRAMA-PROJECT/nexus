@@ -1,7 +1,7 @@
 import { html, render } from 'https://unpkg.com/lit-html?module';
 
 export class HackersContent extends HTMLElement {
-    connectedCallback() {
+	connectedCallback() {
 		const template = html`<div>Hackers</div> `;
 		render(template, this);
 	}

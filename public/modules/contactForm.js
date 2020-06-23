@@ -10,7 +10,6 @@ const validateForm = (event) => {
 		if (formField.value == '') {
 		} else {
 		}
-
 	}
 
 	event.preventDefault();
@@ -19,7 +18,6 @@ const validateForm = (event) => {
 const handleSend = (event) => {
 	console.log('foo');
 	document.querySelector('#contact-form').reportValidity();
-
-}
+};
 
 export { validateForm, handleSend };

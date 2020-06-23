@@ -3,7 +3,7 @@
 	overflow: hidden;
 	background-color: var(--dark-background);
 	background-position: center;
-	background-image: url('../media/math.jpg'); ;
+	background-image: url('../media/math.jpg');
 	background-position: center;
 	background-blend-mode: overlay;
 	animation: var(--animation-fade-in) 1s;
@@ -69,7 +69,6 @@
 	height: 100%;
 	overflow-y: scroll;
 }
-
 
 #main-container__sidebar {
 	flex: 1;
@@ -198,14 +197,12 @@ menu-item {
 	font: var(--sidebar-item);
 	align-items: center;
 	cursor: pointer;
-	animation: var(--animation-fade-in) var(--fade-in-duration);  
+	animation: var(--animation-fade-in) var(--fade-in-duration);
 }
-
 
 .sidebar-item:hover {
 	/* border-bottom: 2px solid var(--dark-blue); */
 }
-
 
 p {
 	text-align: center;

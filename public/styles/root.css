@@ -8,7 +8,6 @@
 	--text-logo: normal small-caps 900 1.6rem 'Roboto Mono', monospace;
 	--sidebar-item: normal normal 300 1rem 'Roboto Mono', monospace;
 
-
 	/* Material design elevation */
 	--elevation-2dp: 0px 1px 5px 0px rgba(0, 0, 0, 0.2),
 		0px 2px 2px 0px rgba(0, 0, 0, 0.14),
@@ -30,7 +29,7 @@
 	--dark-background: #2a2726;
 	--background-color: var(--dark-background);
 	--dark-text-content: #f8f5e0;
-	--dark-headers: #ecf0f1 ;
+	--dark-headers: #ecf0f1;
 	--dark-blue: #00fff0;
 	--dark-green: #4ae3b5;
 
@@ -41,9 +40,7 @@
 	--small-headers: 1.2rem;
 }
 
-:root 
-
-* {
+:root * {
 	/* Avoid size calculation based on margins and padding */
 	box-sizing: border-box;
 

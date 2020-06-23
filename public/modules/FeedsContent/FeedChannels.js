@@ -15,8 +15,8 @@ export class FeedChannels extends HTMLElement {
 	}
 
 	constructor() {
-        super();
-        this.fetchStories();
+		super();
+		this.fetchStories();
 	}
 
 	connectedCallback() {

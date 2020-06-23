@@ -5,8 +5,6 @@ export class FeedsManager {
 		const response = await fetch('stories');
         const feedChannels = await response.json();
 
-        console.log(feedChannels);
-        
         return feedChannels; 
 	};
 }

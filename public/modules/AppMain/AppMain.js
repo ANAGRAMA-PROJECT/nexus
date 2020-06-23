@@ -12,7 +12,7 @@ export class AppMain extends HTMLElement {
     connectedCallback() {
         const template = html`
             <div id="main" class="container__vertical">
-                <main-header id="main-header" @item-select=${this.handleItemSelect}>
+                <main-header id="main-header"  @item-select=${this.handleItemSelect}>
                 </main-header>
                 <section id="main-container">
                     <div id="main-container__sidebar"></div>

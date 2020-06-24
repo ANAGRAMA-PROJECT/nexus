@@ -5,12 +5,14 @@ import '../ContactContent/ContactContent.js';
 import '../ProjectsContent/ProjectsContent.js';
 import '../MainHeader/MainHeader.js';
 import '../HackersContent/HackersContent.js';
+import { styles } from './AppMainStyles.js';
 
 export class AppMain extends HTMLElement {
 	currentSection = 'home';
 
 	connectedCallback() {
 		const template = html`
+			${styles}
 			<div id="main" class="container__vertical">
 				<main-header
 					id="main-header"
@@ -49,6 +51,7 @@ export class AppMain extends HTMLElement {
 				</section>
 			</div>
 		`;
+
 		render(template, this);
 	}
 

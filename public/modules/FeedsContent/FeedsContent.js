@@ -29,8 +29,10 @@ export class FeedsContent extends HTMLElement {
 	}
 
 	renderComponent = () => {
-		const template = html` <feed-channels></feed-channels> `;
-
+		console.log(this.feedChannels);
+		const template = html`
+			<feed-channels .channels=${this.feedChannels}></feed-channels>
+		`;
 		render(template, this);
 	};
 

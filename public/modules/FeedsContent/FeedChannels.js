@@ -11,16 +11,19 @@ export class FeedChannels extends HTMLElement {
 
 	set feedChannels(value) {
 		this.feedsChannelsData = value;
-		this.renderComponent();
+		// this.renderComponent();
 	}
 
 	constructor() {
 		super();
-		this.fetchStories();
+		console.log(this.channels);
+		// this.fetchStories();
 	}
 
 	connectedCallback() {
-		this.renderComponent();
+		console.log(this.getAttribute('channels'));
+		console.log(this.channels);
+		// this.renderComponent();
 	}
 
 	fetchStories = async () => {

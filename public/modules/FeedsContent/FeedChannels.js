@@ -1,60 +1,39 @@
 import { html, render } from 'https://unpkg.com/lit-html?module';
 import { FeedsManager } from './FeedsManager.js';
-import './FeedItem.js';
+import './ChannelItem.js';
 
 export class FeedChannels extends HTMLElement {
-	feedsChannelsData = [];
+	channelsData = [];
 
-	get feedChannels() {
-		return this.feedsChannelsData;
+	get channels() {
+		return this.channelsData;
 	}
 
-	set feedChannels(value) {
-		this.feedsChannelsData = value;
-		// this.renderComponent();
-	}
-
-	constructor() {
-		super();
-		console.log(this.channels);
-		// this.fetchStories();
+	set channels(value) {
+		this.channelsData = value;
+		this.renderComponent();
 	}
 
 	connectedCallback() {
-		console.log(this.getAttribute('channels'));
-		console.log(this.channels);
-		// this.renderComponent();
+		this.renderComponent();
 	}
 
-	fetchStories = async () => {
-		const feedChannels = await FeedsManager.fetchStories();
-		this.feedChannels = feedChannels;
-	};
-
 	renderComponent = () => {
-		const feedChannels = this.feedChannels;
+		const feedChannels = this.channels ? this.channels : [];
 
 		const channelComponents = feedChannels.map((channel, index) => {
-			return html`<feed-item
+			return html`<channel-item
 				index=${index}
-				title=${channel.rss.channel[0].title[0]}
-				link=${channel.rss.channel[0].link[0]}
-				description=${channel.rss.channel[0].description[0]}
+				title=${channel.title[0]}
+				link=${channel.link[0]}
+				description=${channel.description[0]}
 				@channel-select=${this.handleChannelSelect}
-			></feed-item>`;
+			></channel-item>`;
 		});
 
-		const template = html`
-			<div id="feed-channels">
-				${channelComponents}
-			</div>
-		`;
+		const template = html` ${channelComponents} `;
 
 		render(template, this);
-	};
-
-	handleChannelSelect = (event) => {
-		console.log(event.target.getAttribute('index'));
 	};
 }
 

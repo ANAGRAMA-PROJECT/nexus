@@ -1,12 +1,12 @@
 import { html, render } from 'https://unpkg.com/lit-html?module';
 
-export class FeedItem extends HTMLElement {
+export class ChannelItem extends HTMLElement {
 	connectedCallback() {
 		const template = html`<div
 			class="feed-item"
 			@click=${this.handleChannelSelection}
 		>
-			<div class="fedd-item__badge">
+			<div class="feed-item__badge">
 				<div class="feed-badge__form">
 					<div class="feed-badge__text">
 						${this.getInitials(this.title)}
@@ -29,7 +29,9 @@ export class FeedItem extends HTMLElement {
 
 	handleChannelSelection = (event) => {
 		const classList = event.target.classList;
-		const channelSelectEvent = new CustomEvent('channel-select');
+		const channelSelectEvent = new CustomEvent('channel-select', {
+			bubbles: true
+		});
 
 		if (
 			classList.contains('fedd-item__badge') ||
@@ -51,4 +53,4 @@ export class FeedItem extends HTMLElement {
 	};
 }
 
-customElements.define('feed-item', FeedItem);
+customElements.define('channel-item', ChannelItem);

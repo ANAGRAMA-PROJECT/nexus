@@ -81,7 +81,6 @@ export class FeedsContent extends HTMLElement {
 	};
 
 	handleChannelSelect = (event) => {
-		console.log('channel-selected', this.componentsHidden);
 		const channelIndex = event.target.getAttribute('index');
 		this.selectedIndex = channelIndex;
 	};

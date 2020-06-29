@@ -36,7 +36,6 @@ export class FeedStories extends HTMLElement {
 	}
 
 	renderComponent() {
-		console.log('stories', this.stories);
 
 		const storiesComponents = this.stories.map((story, index) => {
 			return html`<story-item
@@ -63,7 +62,6 @@ export class FeedStories extends HTMLElement {
 	}
 
 	handleStorySelect = (event) => {
-		console.log(event.target.getAttribute('index'));
 		this.selectedStoryIndex = event.target.getAttribute('index');
 	};
 

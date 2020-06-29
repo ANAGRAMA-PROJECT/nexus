@@ -1,12 +1,10 @@
-class Router {
-	static routes = new Map();
+export class Router {
 
-	static setRoute = (path, callback) => {
+	static setRoute = (path, state) => {
 		const relativePath = `/app/${path}`;
-		this.routes.set(relativePath, callback);
 
 		window.history.pushState(
-			{},
+			state,
 			path,
 			window.location.origin + relativePath
 		);
@@ -16,9 +14,5 @@ class Router {
 
 	static popStateHandler = (event) => {
 		console.log(window.location.pathname);
-		console.log(this.routes.get(window.location.pathname));
-		this.routes.get(window.location.pathname)();
 	};
 }
-
-export { Router };

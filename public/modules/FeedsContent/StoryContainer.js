@@ -17,7 +17,6 @@ export class StoryContainer extends HTMLElement {
 	}
 
 	renderComponent() {
-		console.log(this.story);
 		const template = html`${this.formatHtml(this.story)}`;
 		render(template, this);
 	}

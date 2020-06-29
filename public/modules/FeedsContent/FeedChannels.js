@@ -1,5 +1,4 @@
 import { html, render } from 'https://unpkg.com/lit-html?module';
-import { FeedsManager } from './FeedsManager.js';
 import './ChannelItem.js';
 
 export class FeedChannels extends HTMLElement {

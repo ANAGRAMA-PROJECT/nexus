@@ -7,7 +7,7 @@ export const styles = html`
 			overflow: hidden;
 			background-color: var(--dark-background);
 			background-position: center;
-			background-image: url('../media/math.jpg');
+			background-image: url('media/math.jpg');
 			background-position: center;
 			background-blend-mode: overlay;
 			animation: var(--animation-fade-in) 1s;

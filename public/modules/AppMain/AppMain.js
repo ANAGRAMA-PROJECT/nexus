@@ -6,7 +6,6 @@ import '../ProjectsContent/ProjectsContent.js';
 import '../MainHeader/MainHeader.js';
 import '../HackersContent/HackersContent.js';
 import { styles } from './AppMainStyles.js';
-import { Router } from '../Router/Router.js';
 
 export class AppMain extends HTMLElement {
 	stateData = {
@@ -30,8 +29,12 @@ export class AppMain extends HTMLElement {
 	}
 
 	connectedCallback() {
+		this.handleRouting();
 		this.renderComponent();
 	}
+
+	handleRouting = () => {
+	};
 
 	renderComponent() {
 		const template = html`
@@ -76,7 +79,6 @@ export class AppMain extends HTMLElement {
 			</div>
 		`;
 		render(template, this);
-		Router.setRoute(this.state.currentSection, this.state);
 	}
 
 	handleItemSelect = (event) => {
@@ -99,11 +101,10 @@ export class AppMain extends HTMLElement {
 		const newState = {
 			currentSection: sectionName,
 			sectionsHidden: newSections
-		}
+		};
 
 		this.state = newState;
 	};
-
 }
 
 customElements.define('app-main', AppMain);

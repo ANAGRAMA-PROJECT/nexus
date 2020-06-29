@@ -1,20 +1,19 @@
 const express = require('express');
 const path = require('path');
 const rss = require('./modules/rss.js');
-const { request } = require('express');
+const { response } = require('express');
 
 const app = express();
 
 app.set('port', process.env.PORT || 5000);
 
-app.use('/', express.static(path.join(__dirname, '../public/')));
-
-app.use('/app/*', (request, response) => {
-	response.location('back');
-	response.redirect('/');
+app.use('/app', express.static(path.join(__dirname, '../public/')));
+app.use('/app/*', express.static(path.join(__dirname, '../public/')));
+app.get('/stories', rss.fetchStoriesRouter);
+app.get('/', (request, response) => {
+	response.redirect('/app');
 });
 
-app.get('/stories', rss.fetchStoriesRouter);
 app.use('/contact-form', (request, response) => {
 	console.log(request);
 });

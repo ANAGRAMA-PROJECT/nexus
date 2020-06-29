@@ -12,6 +12,29 @@
 			href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
 		/>
 
+		<script>
+			if (
+				window.location.pathname != '/app/' &&
+				window.location.pathname != '/' &&
+				window.location.pathname != '/app'
+			) {
+				window.localStorage.setItem(
+					window.location.host + 'originalLocation',
+					JSON.stringify(window.location)
+				);
+				window.location.assign('/app/');
+			} else {
+				window.__originalLocation = JSON.parse(
+					window.localStorage.getItem(
+						window.location.host + 'originalLocation'
+					)
+				);
+				window.localStorage.removeItem(
+					window.location.host + 'originalLocation'
+				);
+			}
+		</script>
+
 		<script type="module" src="modules/index.js"></script>
 
 		<style>

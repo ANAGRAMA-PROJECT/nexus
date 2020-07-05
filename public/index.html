@@ -13,26 +13,29 @@
 		/>
 
 		<script>
-			if (
-				window.location.pathname != '/app/' &&
-				window.location.pathname != '/' &&
-				window.location.pathname != '/app'
-			) {
-				window.localStorage.setItem(
-					window.location.host + 'originalLocation',
-					JSON.stringify(window.location)
-				);
-				window.location.assign('/app/');
-			} else {
-				window.__originalLocation = JSON.parse(
-					window.localStorage.getItem(
+			const routeToMain = () => {
+				if (
+					window.location.pathname != '/app/' &&
+					window.location.pathname != '/' &&
+					window.location.pathname != '/app'
+				) {
+					window.localStorage.setItem(
+						window.location.host + 'originalLocation',
+						JSON.stringify(window.location)
+					);
+					window.location.assign('/app/');
+				} else {
+					window.__originalLocation = JSON.parse(
+						window.localStorage.getItem(
+							window.location.host + 'originalLocation'
+						)
+					);
+					window.localStorage.removeItem(
 						window.location.host + 'originalLocation'
-					)
-				);
-				window.localStorage.removeItem(
-					window.location.host + 'originalLocation'
-				);
-			}
+					);
+				}
+			};
+			routeToMain();
 		</script>
 
 		<script type="module" src="modules/index.js"></script>

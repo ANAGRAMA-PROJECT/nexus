@@ -36,7 +36,6 @@ export class FeedStories extends HTMLElement {
 	}
 
 	renderComponent() {
-
 		const storiesComponents = this.stories.map((story, index) => {
 			return html`<story-item
 				index=${index}

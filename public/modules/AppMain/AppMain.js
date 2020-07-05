@@ -5,36 +5,24 @@ import '../ContactContent/ContactContent.js';
 import '../ProjectsContent/ProjectsContent.js';
 import '../MainHeader/MainHeader.js';
 import '../HackersContent/HackersContent.js';
+import { Router } from '../Router/Router.js';
 import { styles } from './AppMainStyles.js';
 
 export class AppMain extends HTMLElement {
-	stateData = {
-		currentSection: 'home',
-		sectionsHidden: new Map([
-			['home', false],
-			['feeds', true],
-			['projects', true],
-			['contact', true],
-			['hackers', true]
-		])
-	};
+	pathString;
 
-	get state() {
-		return this.stateData;
+	get pathName() {
+		return this.pathString;
 	}
 
-	set state(data) {
-		this.stateData = data;
-		this.renderComponent();
+	set pathName(string) {
+		this.pathString = string;
+		Router.handleRoute(this, this.pathString);
 	}
 
 	connectedCallback() {
-		this.handleRouting();
 		this.renderComponent();
 	}
-
-	handleRouting = () => {
-	};
 
 	renderComponent() {
 		const template = html`
@@ -51,27 +39,22 @@ export class AppMain extends HTMLElement {
 						<home-content
 							id="main-content__home"
 							path="home"
-							?hidden=${this.state.sectionsHidden.get('home')}
 						></home-content>
 						<feeds-content
 							id="main-content__feeds"
 							path="feeds"
-							?hidden=${this.state.sectionsHidden.get('feeds')}
 						></feeds-content>
 						<projects-content
 							id="main-content__projects"
 							path="projects"
-							?hidden=${this.state.sectionsHidden.get('projects')}
 						></projects-content>
 						<contact-content
 							id="main-content__contact"
 							path="contact"
-							?hidden=${this.state.sectionsHidden.get('contact')}
 						></contact-content>
 						<hackers-content
 							id="main-content__hackers"
 							path="hackers"
-							?hidden=${this.state.sectionsHidden.get('hackers')}
 						></hackers-content>
 					</div>
 					<div id="main-container__leftover"></div>
@@ -82,28 +65,8 @@ export class AppMain extends HTMLElement {
 	}
 
 	handleItemSelect = (event) => {
-		const sectionName = event.detail.sectionName;
-		this.changeSectionsVisibility(sectionName);
-	};
-
-	changeSectionsVisibility = (sectionName) => {
-		const currentSections = this.state.sectionsHidden;
-		const newSections = new Map();
-
-		for (let [key, value] of currentSections) {
-			if (key == sectionName) {
-				newSections.set(key, false);
-			} else {
-				newSections.set(key, true);
-			}
-		}
-
-		const newState = {
-			currentSection: sectionName,
-			sectionsHidden: newSections
-		};
-
-		this.state = newState;
+		const pathLevel = event.detail.sectionName;
+		Router.replaceLastLevel(pathLevel);
 	};
 }
 

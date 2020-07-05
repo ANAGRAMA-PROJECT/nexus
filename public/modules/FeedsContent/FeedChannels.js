@@ -26,11 +26,10 @@ export class FeedChannels extends HTMLElement {
 				title=${channel.title[0]}
 				link=${channel.link[0]}
 				description=${channel.description[0]}
-				@channel-select=${this.handleChannelSelect}
 			></channel-item>`;
 		});
 
-		const template = html` ${channelComponents} `;
+		const template = html` ${channelComponents}  `;
 
 		render(template, this);
 	};

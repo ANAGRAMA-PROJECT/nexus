@@ -1,35 +1,100 @@
 export class Router {
-	static pathPosition;
+	static initialPattern = /\/\s|\/app\/.*/;
+	static rootComponent = {};
+	static referenceString = '';
 
-	static init = () => {
-		this.pathPosition = 0;
+	static get currentHref() {
+		return this.referenceString;
+	}
+
+	static set currentHref(string) {
+		this.referenceString = string;
+		if (this.referenceString != window.location.href) {
+			window.history.pushState({}, '', `${this.referenceString}`);
+		} else {
+			window.history.replaceState({}, '', `${this.referenceString}`);
+		}
+		this.handleRoute(this.rootComponent, window.location.pathname);
+	}
+
+	static init = (rootComponent, location) => {
+		this.rootComponent = rootComponent;
+		this.currentHref = location.href;
 	};
 
-	static setRoute = (path, state) => {
-		const relativePath = `/app/${path}`;
+	static handleRoute = (component, pathname) => {
+		let subPath = null;
 
-		window.history.pushState(
-			state,
-			path,
-			window.location.origin + relativePath
+		if (!component.hidden && pathname != '/') {
+			const pathLevels = this.getPathLevels(pathname);
+			const currentLevel = pathLevels[0];
+
+			const targetComponent = component.querySelector(
+				`[path="${currentLevel}"]`
+			);
+
+			console.log(targetComponent);
+			console.log(pathname);
+
+			if (targetComponent) {
+				const targetSiblings = targetComponent
+					? targetComponent.parentElement.children
+					: [];
+
+				targetComponent.hidden = false;
+
+				for (const node of targetSiblings) {
+					if (node.getAttribute('path') != currentLevel) {
+						node.hidden = true;
+					}
+				}
+			} else {
+				throw 'The path level was not found';
+			}
+
+			subPath = pathname.replace(/\/[A-Z]*/i, '');
+			console.log('subPath', subPath);
+			targetComponent.pathName = subPath;
+
+			window.onpopstate = this.handlePopState;
+		}
+	};
+
+	static replaceLastLevel = (pathLevel) => {
+		const currentPathName = window.location.pathname;
+		const currentPathLevels = this.getPathLevels(currentPathName);
+		const lastLevel = currentPathLevels[currentPathLevels.length - 1];
+
+		console.log(lastLevel);
+
+		const newPathName = currentPathName.replace(
+			new RegExp(`${lastLevel}/$`, 'i'),
+			`${pathLevel}/`
 		);
 
-		window.onpopstate = this.popStateHandler;
+		const newHref = `${window.location.origin}${newPathName}`;
+
+		this.currentHref = newHref;
 	};
 
-	static popStateHandler = (event) => {
-		console.log(window.location.pathname);
+	static appendPathLevel = (pathLevel) => {
+		const currentPathName = window.location.pathname;
+		const newPathName = `${currentPathName}${pathLevel}/`;
+		const newHref = `${window.location.origin}${newPathName}`;
+
+		this.currentHref = newHref;
 	};
 
-	static validatePath = (path) => {
-		const validPathPattern = /\/\s|\/app\/.*/;
-		const isValid = validPathPattern.test(path);
-		return isValid;
+	static handlePopState = (event) => {
+		Router.handleRoute(document.body, window.location.pathname);
 	};
 
-	static getOriginalLocation = () => {
-		return window.__originalLocation;
+	static getPathLevels = (pathname) => {
+		const splittedLevels = pathname.split('/');
+		return splittedLevels.filter((level) => level != '');
 	};
 
-	static getCurrentPath = () => {};
+	static getCurrentPathLevel = () => {
+		return this.urlLevels[this.pathPosition++];
+	};
 }

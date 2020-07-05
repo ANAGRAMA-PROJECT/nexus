@@ -1,36 +1,43 @@
 import { html, render } from 'https://unpkg.com/lit-html?module';
 import { FeedsManager } from './FeedsManager.js';
 import { styles } from './FeedsContentStyles.js';
+import { Router } from '../Router/Router.js';
 import './FeedChannels.js';
 import './FeedStories.js';
 
 export class FeedsContent extends HTMLElement {
-	feedsChannelsData = [];
+	feedsData = [];
 	selectedStories = [];
-	currentIndex = -1;
-	componentsHidden = {
-		channels: false,
-		stories: true
-	};
+	currentChannelIndex = -1;
+	pathString = '';
 
-	get selectedIndex() {
-		return this.currentIndex;
+	get pathName() {
+		return this.pathString;
 	}
 
-	set selectedIndex(index) {
-		this.currentIndex = index;
-		this.selectedStories = this.feedChannels[index].rss.channel[0].item;
-		this.changeVisibility();
+	set pathName(string) {
+		this.pathString = string;
+		console.log(string);
+	}
+
+	get selectedChannelIndex() {
+		return this.currentChannelIndex;
+	}
+
+	set selectedChannelIndex(index) {
+		this.currentChannelIndex = index;
+		this.selectedStories = this.feeds[index].rss.channel[0].item;
 		this.renderComponent();
+		Router.appendPathLevel('stories');
 	}
 
-	get feedChannels() {
-		return this.feedsChannelsData;
+	get feeds() {
+		return this.feedsData;
 	}
 
-	set feedChannels(data) {
-		this.feedsChannelsData = data;
-		this.channels = this.feedsChannelsData.map((rawChannel) => {
+	set feeds(data) {
+		this.feedsData = data;
+		this.channels = this.feedsData.map((rawChannel) => {
 			return rawChannel.rss.channel[0];
 		});
 
@@ -39,7 +46,7 @@ export class FeedsContent extends HTMLElement {
 
 	fetchStories = async () => {
 		const feedChannels = await FeedsManager.fetchStories();
-		this.feedChannels = feedChannels;
+		this.feeds = feedChannels;
 	};
 
 	constructor() {
@@ -58,31 +65,20 @@ export class FeedsContent extends HTMLElement {
 				id="feed-channels"
 				.channels=${this.channels}
 				@channel-select=${this.handleChannelSelect}
-				?hidden=${this.componentsHidden.channels}
 			></feed-channels>
 			<feed-stories
 				id="feed-stories"
 				.stories=${this.selectedStories}
-				?hidden=${this.componentsHidden.stories}
-			></feed-channels>
+				path="stories"
+				hidden
 			></feed-stories>
 		`;
 		render(template, this);
 	};
 
-	changeVisibility = () => {
-		if (this.componentsHidden.channels) {
-			this.componentsHidden.channels = false;
-			this.componentsHidden.stories = true;
-		} else {
-			this.componentsHidden.channels = true;
-			this.componentsHidden.stories = false;
-		}
-	};
-
 	handleChannelSelect = (event) => {
 		const channelIndex = event.target.getAttribute('index');
-		this.selectedIndex = channelIndex;
+		this.selectedChannelIndex = channelIndex;
 	};
 }
 

@@ -21,6 +21,6 @@ const setInitialLocation = () => {
 
 const template = html`<app-main path="app"></app-main>`;
 render(template, document.body);
-const currentLocation = setInitialLocation();
 
+const currentLocation = setInitialLocation();
 Router.init(document.body, currentLocation);

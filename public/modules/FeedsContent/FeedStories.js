@@ -1,58 +1,92 @@
 import { html, render } from 'https://unpkg.com/lit-html?module';
 import './StoryContainer.js';
 import './StoryItem.js';
+import './StoryList.js';
+import { Router } from '../Router/Router.js';
 
 export class FeedStories extends HTMLElement {
 	storiesData = [];
-	currentStoryIndex = -1;
-	componentsHidden = {
-		storyList: false,
-		storyContainer: true
+	pathString = '';
+	stateData = {
+		stories: [],
+		storyListHidden: false,
+		selectedStoryHidden: true,
+		selectedStory: {},
+		selectedPathStory: ''
 	};
-	selectedStory = {};
+
+	get state() {
+		return this.stateData;
+	}
+
+	set state(data) {
+		this.stateData = data;
+		this.stateData = this.handlePathName(data);
+		this.renderComponent();
+	}
+
+	get pathname() {
+		return this.pathString;
+	}
+
+	set pathname(pathString) {
+		const state = this.state;
+
+		this.pathString = pathString;
+
+		state.selectedPathName = pathString;
+		state.selectedPathStory = Router.getPathSegments(pathString)[0];
+
+		this.state = state;
+	}
 
 	get stories() {
-		return this.storiesData;
+		return this.state.storiesData;
 	}
 
 	set stories(data) {
-		this.storiesData = data;
-		this.renderComponent();
+		const state = this.state;
+		state.stories = data;
+		this.state = state;
 	}
 
-	get selectedStoryIndex() {
-		return this.currentStoryIndex;
-	}
+	handlePathName = (state) => {
+		if (state.selectedPathStory && state.selectedPathStory != '') {
+			const segment = state.selectedPathStory.replace(/\//g, '');
+			if (state.stories.length != 0) {
+				const selectedStory = state.stories.find(
+					(story) => Router.encodeBase64Url(story.link[0]) == segment
+				);
+				state.selectedStory = selectedStory;
+				if (selectedStory) {
+					state.storyListHidden = true;
+					state.selectedStoryHidden = false;
+				}
+			}
+		} else {
+			state.storyListHidden = false;
+			state.selectedStoryHidden = true;
+		}
 
-	set selectedStoryIndex(index) {
-		this.currentStoryIndex = index;
-		this.selectedStory = this.stories[index]['content:encoded'];
-		this.changevisibility();
-		this.renderComponent();
-	}
+		return state;
+	};
 
 	connectedCallback() {
 		this.renderComponent();
 	}
 
 	renderComponent() {
-		const storiesComponents = this.stories.map((story, index) => {
-			return html`<story-item
-				index=${index}
-				class="story-item"
-				.story=${story}
-				@story-select=${this.handleStorySelect}
-			></story-item>`;
-		});
-
 		const template = html`
-			<div id="stories__list" ?hidden=${this.componentsHidden.storyList}>
-				${storiesComponents}
-			</div>
+			<story-list
+				id="stories__list"
+				.stories=${this.state.stories}
+				@story-select=${this.handleStorySelect}
+				?hidden=${this.state.storyListHidden}
+			></story-list>
 			<story-container
 				id="stories__container"
-				.story=${this.selectedStory}
-				?hidden=${this.componentsHidden.storyContainer}
+				.story=${this.state.selectedStory}
+				?hidden=${this.state.selectedStoryHidden}
 			>
 			</story-container>
 		`;
@@ -61,7 +95,18 @@ export class FeedStories extends HTMLElement {
 	}
 
 	handleStorySelect = (event) => {
-		this.selectedStoryIndex = event.target.getAttribute('index');
+		const state = this.state;
+		const storyIndex = event.target.getAttribute('index');
+
+		state.selectedStory = this.state.stories[storyIndex];
+		state.selectedPathName = this.getStoryPathSegment(state.selectedStory);
+
+		this.state = state;
+		Router.appendPathSegment(state.selectedPathName);
+	};
+
+	getStoryPathSegment = (story) => {
+		return Router.encodeBase64Url(story.link);
 	};
 
 	changevisibility = () => {

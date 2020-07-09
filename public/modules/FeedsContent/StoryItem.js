@@ -25,7 +25,7 @@ export class StoryItem extends HTMLElement {
 			</div>
 			<div class="story-item__detail" @click=${this.handleStoryItemClick}>
 				<div class="story-detail__title">${this.story.title[0]}</div>
-				<div class="story-detail__link">${this.story.link[0]}</div>
+				<a class="story-detail__link" href=${this.story.link[0]} >${this.story.link[0]}</a> 
 				<div class="story-detail__meta">
 					<span class="story-meta__author"
 						>${this.story['dc:creator'][0]}

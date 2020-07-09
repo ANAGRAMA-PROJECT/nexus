@@ -1,40 +1,38 @@
 export class Router {
 	static initialPattern = /\/\s|\/app\/.*/;
 	static rootComponent = {};
-	static referenceString = '';
+	static currentHref = '';
 
-	static get currentHref() {
-		return this.referenceString;
+	static get href() {
+		return this.currentHref;
 	}
 
-	static set currentHref(string) {
-		this.referenceString = string;
-		if (this.referenceString != window.location.href) {
-			window.history.pushState({}, '', `${this.referenceString}`);
+	static set href(string) {
+		this.currentHref = string;
+		if (this.currentHref != window.location.href) {
+			window.history.pushState({}, '', `${this.currentHref}`);
 		} else {
-			window.history.replaceState({}, '', `${this.referenceString}`);
+			window.history.replaceState({}, '', `${this.currentHref}`);
 		}
-		this.handleRoute(this.rootComponent, window.location.pathname);
+		this.handlePathName(this.rootComponent, window.location.pathname);
 	}
 
 	static init = (rootComponent, location) => {
+		window.onpopstate = this.handlePopState;
 		this.rootComponent = rootComponent;
-		this.currentHref = location.href;
+		this.href = location.href;
 	};
 
-	static handleRoute = (component, pathname) => {
+	static handlePathName = (component, pathname) => {
 		let subPath = null;
 
 		if (!component.hidden && pathname != '/') {
-			const pathLevels = this.getPathLevels(pathname);
-			const currentLevel = pathLevels[0];
+			const segments = this.getPathSegments(pathname);
+			const currentSegment = segments[0];
 
 			const targetComponent = component.querySelector(
-				`[path="${currentLevel}"]`
+				`[path="${currentSegment}"]`
 			);
-
-			console.log(targetComponent);
-			console.log(pathname);
 
 			if (targetComponent) {
 				const targetSiblings = targetComponent
@@ -44,57 +42,71 @@ export class Router {
 				targetComponent.hidden = false;
 
 				for (const node of targetSiblings) {
-					if (node.getAttribute('path') != currentLevel) {
+					if (node.getAttribute('path') != currentSegment) {
 						node.hidden = true;
 					}
 				}
 			} else {
-				throw 'The path level was not found';
+				throw 'Error: Path segment was not found';
 			}
 
 			subPath = pathname.replace(/\/[A-Z]*/i, '');
-			console.log('subPath', subPath);
-			targetComponent.pathName = subPath;
-
-			window.onpopstate = this.handlePopState;
+			targetComponent.pathname = subPath;
 		}
 	};
 
-	static replaceLastLevel = (pathLevel) => {
+	static replacePathName = (previousPathName, segment) => {
 		const currentPathName = window.location.pathname;
-		const currentPathLevels = this.getPathLevels(currentPathName);
-		const lastLevel = currentPathLevels[currentPathLevels.length - 1];
-
-		console.log(lastLevel);
-
 		const newPathName = currentPathName.replace(
-			new RegExp(`${lastLevel}/$`, 'i'),
-			`${pathLevel}/`
+			previousPathName,
+			`/${segment}/`
 		);
-
 		const newHref = `${window.location.origin}${newPathName}`;
 
-		this.currentHref = newHref;
+		this.href = newHref;
 	};
 
-	static appendPathLevel = (pathLevel) => {
-		const currentPathName = window.location.pathname;
-		const newPathName = `${currentPathName}${pathLevel}/`;
-		const newHref = `${window.location.origin}${newPathName}`;
+	static appendPathSegment = (pathSegment) => {
+		const segments = this.getPathSegments(window.location.pathname);
+		const lastIndex = segments.length - 1;
+		const lastSegment = segments[lastIndex];
 
-		this.currentHref = newHref;
+		if (lastSegment != pathSegment) {
+			const currentPathName = window.location.pathname;
+			const newPathName = `${currentPathName}${pathSegment}/`;
+			const newHref = `${window.location.origin}${newPathName}`;
+
+			this.href = newHref;
+		}
 	};
 
 	static handlePopState = (event) => {
-		Router.handleRoute(document.body, window.location.pathname);
+		Router.handlePathName(this.rootComponent, window.location.pathname);
 	};
 
-	static getPathLevels = (pathname) => {
+	static getPathSegments = (pathname) => {
 		const splittedLevels = pathname.split('/');
 		return splittedLevels.filter((level) => level != '');
 	};
 
-	static getCurrentPathLevel = () => {
-		return this.urlLevels[this.pathPosition++];
+	static encodeBase64Url = (string) => {
+		const base64Encoded = btoa(encodeURIComponent(string));
+		const urlSafeCode = base64Encoded
+			.replace(/\+/g, '-')
+			.replace(/\//g, '_')
+			.replace(/\=+$/, '');
+		return urlSafeCode;
+	};
+
+	static decodeBase64Url = (string) => {
+		const decodedString = decodeURIComponent(string);
+		const depuratedString = (decodedString + '===').slice(
+			0,
+			string.length + (string.length % 4)
+		);
+		const originalBase64 = depuratedString
+			.replace(/-/g, '+')
+			.replace(/_/g, '/');
+		return atob(originalBase64);
 	};
 }

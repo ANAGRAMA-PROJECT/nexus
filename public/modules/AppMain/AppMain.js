@@ -11,13 +11,13 @@ import { styles } from './AppMainStyles.js';
 export class AppMain extends HTMLElement {
 	pathString;
 
-	get pathName() {
+	get pathname() {
 		return this.pathString;
 	}
 
-	set pathName(string) {
+	set pathname(string) {
 		this.pathString = string;
-		Router.handleRoute(this, this.pathString);
+		Router.handlePathName(this, this.pathString);
 	}
 
 	connectedCallback() {
@@ -65,8 +65,8 @@ export class AppMain extends HTMLElement {
 	}
 
 	handleItemSelect = (event) => {
-		const pathLevel = event.detail.sectionName;
-		Router.replaceLastLevel(pathLevel);
+		const segment = event.detail.sectionName;
+		Router.replacePathName(this.pathname, segment);
 	};
 }
 

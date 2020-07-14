@@ -1,7 +1,7 @@
 const express = require('express');
 const path = require('path');
 const rss = require('./modules/rss.js');
-const { response } = require('express');
+const gitRepos = require('./modules/gitRepos.js');
 
 const app = express();
 
@@ -10,6 +10,7 @@ app.set('port', process.env.PORT || 5000);
 app.use('/app', express.static(path.join(__dirname, '../public/')));
 app.use('/app/*', express.static(path.join(__dirname, '../public/')));
 app.get('/stories', rss.fetchStoriesRouter);
+app.get('/gitrepos', gitRepos.fetchProjectRepos);
 app.get('/', (request, response) => {
 	response.redirect('/app');
 });

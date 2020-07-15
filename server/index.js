@@ -9,11 +9,13 @@ app.set('port', process.env.PORT || 5000);
 
 app.use('/app', express.static(path.join(__dirname, '../public/')));
 app.use('/app/*', express.static(path.join(__dirname, '../public/')));
-app.get('/stories', rss.fetchStoriesRouter);
-app.get('/gitrepos', gitRepos.fetchProjectRepos);
 app.get('/', (request, response) => {
 	response.redirect('/app');
 });
+
+app.get('/stories', rss.fetchStoriesRouter);
+app.get('/gitrepos', gitRepos.fetchProjectRepos);
+
 
 app.use('/contact-form', (request, response) => {
 	console.log(request);
